@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Base-netops-refresh", "Llamasoft_Refresh_1.0\Base-netops-refresh.dtproj", "{2D561DF3-0E22-454C-ABB6-523A10471782}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D561DF3-0E22-454C-ABB6-523A10471782}.Development|Default.ActiveCfg = Development
+		{2D561DF3-0E22-454C-ABB6-523A10471782}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE2A5FF1-B141-47F2-9E2F-233D5F962B3C}
+	EndGlobalSection
+EndGlobal
