@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="E-Base-tables-single-new-TP"
   DTS:PackageType="5"
-  DTS:VersionBuild="265"
-  DTS:VersionGUID="{79D35B08-1D64-4F76-A297-7710BA93DDB7}">
+  DTS:VersionBuild="278"
+  DTS:VersionGUID="{D71960C0-EDD4-4CE6-B8F6-7EA5E08BD406}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -97,33 +97,23 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[llama 6 NO 1]"
+      DTS:refId="Package.ConnectionManagers[llama 6 NO 1 test]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{491BF50B-172D-42B8-8667-34D2E6454092}"
-      DTS:ObjectName="llama 6 NO 1">
+      DTS:ObjectName="llama 6 NO 1 test">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Data Source=ms238scgdb06;Initial Catalog=test-base-no_2F0B7F84769AA0D22972E1BE77CA9AD8B56C4452;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[llama 6 NO 2]"
+      DTS:refId="Package.ConnectionManagers[llama 6 NO 2 test]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{6D4D823C-F94F-4045-9A88-A7E790707915}"
-      DTS:ObjectName="llama 6 NO 2">
+      DTS:ObjectName="llama 6 NO 2 test">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Data Source=ms238scgdb06;Initial Catalog=test-base-no_2F0B7F84769AA0D22972E1BE77CA9AD8B56C4452;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[llama 7 NO]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{601BBC09-0BAF-4727-9D48-26F50BCFB641}"
-      DTS:ObjectName="llama 7 NO">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=ms238scgdb07;Initial Catalog=Network Model_6FF5FB81FD3A75D472DB63247A63D61E882F3601;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -153,7 +143,6 @@
       DTS:refId="Package\Customer"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{147A00B1-9E40-4AC6-AEA5-C3084D1BF1A6}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -199,7 +188,7 @@
 
 from 
 	
-	opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2</property>
+	SCD_Trans_Policies_V2</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -251,7 +240,7 @@ from
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Output].ExternalColumns[CustomerZipcode]"
-                      length="50"
+                      length="5"
                       lineageId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Output].Columns[CustomerZipcode]"
                       name="CustomerZipcode"
                       truncationRowDisposition="FailComponent" />
@@ -267,11 +256,10 @@ from
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Output].Columns[SingleSiteSourcing]"
-                      dataType="wstr"
+                      dataType="bool"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Output].ExternalColumns[SingleSiteSourcing]"
-                      length="50"
                       lineageId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Output].Columns[SingleSiteSourcing]"
                       name="SingleSiteSourcing"
                       truncationRowDisposition="FailComponent" />
@@ -281,7 +269,7 @@ from
                     <externalMetadataColumn
                       refId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Output].ExternalColumns[CustomerName]"
                       dataType="wstr"
-                      length="31"
+                      length="271"
                       name="CustomerName" />
                     <externalMetadataColumn
                       refId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Output].ExternalColumns[CustomerZipcode]"
@@ -307,7 +295,7 @@ from
                     <outputColumn
                       refId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Error Output].Columns[CustomerName]"
                       dataType="wstr"
-                      length="31"
+                      length="271"
                       lineageId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Error Output].Columns[CustomerName]"
                       name="CustomerName" />
                     <outputColumn
@@ -403,8 +391,8 @@ from
               <connections>
                 <connection
                   refId="Package\Customer\Customer into base-no.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1]"
+                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1 test]"
+                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1 test]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -426,14 +414,13 @@ from
                     <inputColumn
                       refId="Package\Customer\Customer into base-no.Inputs[OLE DB Destination Input].Columns[CustomerZipcode]"
                       cachedDataType="wstr"
-                      cachedLength="50"
+                      cachedLength="5"
                       cachedName="CustomerZipcode"
                       externalMetadataColumnId="Package\Customer\Customer into base-no.Inputs[OLE DB Destination Input].ExternalColumns[CustomerZipCode]"
                       lineageId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Output].Columns[CustomerZipcode]" />
                     <inputColumn
                       refId="Package\Customer\Customer into base-no.Inputs[OLE DB Destination Input].Columns[SingleSiteSourcing]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
+                      cachedDataType="bool"
                       cachedName="SingleSiteSourcing"
                       externalMetadataColumnId="Package\Customer\Customer into base-no.Inputs[OLE DB Destination Input].ExternalColumns[SingleSiteSourcing]"
                       lineageId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Output].Columns[SingleSiteSourcing]" />
@@ -657,7 +644,6 @@ from
       DTS:refId="Package\Customer demand"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{6E97AB81-2AD9-430A-BF9E-65FF966FED49}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -698,7 +684,7 @@ from
 	,isnull(SUM(dry_bl_cases),0) AS [Demand]
 	,'' as Mode
 
-FROM	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+FROM	SCD_Trans_Policies_V2 as a
 
 WHERE  
 	baseline_flag = 'y'
@@ -715,7 +701,7 @@ SELECT DISTINCT
 	,isnull(SUM(cool_bl_cases),0) AS [Demand]
 	,'' as Mode
 
-FROM	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+FROM	SCD_Trans_Policies_V2 as a
 
 WHERE  
 	baseline_flag = 'y'
@@ -731,7 +717,7 @@ SELECT DISTINCT
 	,isnull(SUM(freezer_bl_cases),0) AS [Demand]
 	,'' as Mode
 
-FROM	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+FROM	SCD_Trans_Policies_V2 as a
 
 WHERE  
 	baseline_flag = 'y'
@@ -820,7 +806,7 @@ GROUP BY
                     <externalMetadataColumn
                       refId="Package\Customer demand\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[SiteName]"
                       dataType="wstr"
-                      length="31"
+                      length="271"
                       name="SiteName" />
                     <externalMetadataColumn
                       refId="Package\Customer demand\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
@@ -849,7 +835,7 @@ GROUP BY
                     <outputColumn
                       refId="Package\Customer demand\from Llama01.Outputs[OLE DB Source Error Output].Columns[SiteName]"
                       dataType="wstr"
-                      length="31"
+                      length="271"
                       lineageId="Package\Customer demand\from Llama01.Outputs[OLE DB Source Error Output].Columns[SiteName]"
                       name="SiteName" />
                     <outputColumn
@@ -948,8 +934,8 @@ GROUP BY
               <connections>
                 <connection
                   refId="Package\Customer demand\into base-no.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1]"
+                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1 test]"
+                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1 test]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1194,21 +1180,20 @@ GROUP BY
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Customer sourcing 1"
+      DTS:refId="Package\Customer sourcing"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{F28216A6-77F2-4AED-969C-3C7D1540AF32}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Customer sourcing 1">
+      DTS:ObjectName="Customer sourcing">
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
           version="1">
           <components>
             <component
-              refId="Package\Customer sourcing 1\from Llama01"
+              refId="Package\Customer sourcing\from Llama01"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -1239,7 +1224,7 @@ GROUP BY
 		,round([warehouse_cto_cpc],3) AS [UnitSourcingCost]
 		,'Exclude' as [CustomerSourcingPolicyStatus]
 
-FROM  opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 --  SCD_trans_policies_v2
+FROM  SCD_trans_policies_v2
  
 
 UNION ALL
@@ -1251,7 +1236,7 @@ SELECT DISTINCT
 		,round([warehouse_cto_cpc],3) AS [UnitSourcingCost]
 		,'Exclude' as [CustomerSourcingPolicyStatus]
 
-FROM opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 --  SCD_trans_policies_v2
+FROM SCD_trans_policies_v2
 
 UNION ALL
 
@@ -1262,7 +1247,7 @@ SELECT DISTINCT
 		,round([warehouse_cto_cpc],3) AS [UnitSourcingCost]
 		,'Exclude' as [CustomerSourcingPolicyStatus]
 
-FROM opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 --  SCD_trans_policies_v2</property>
+FROM SCD_trans_policies_v2</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1287,7 +1272,7 @@ FROM opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 --  SCD_tra
               </properties>
               <connections>
                 <connection
-                  refId="Package\Customer sourcing 1\from Llama01.Connections[OleDbConnection]"
+                  refId="Package\Customer sourcing\from Llama01.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[llama 4 transformation]"
                   connectionManagerRefId="Package.ConnectionManagers[llama 4 transformation]"
                   description="The OLE DB runtime connection used to access the database."
@@ -1295,134 +1280,134 @@ FROM opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 --  SCD_tra
               </connections>
               <outputs>
                 <output
-                  refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output]"
+                  refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].Columns[SiteName]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].Columns[SiteName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[SiteName]"
+                      externalMetadataColumnId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[SiteName]"
                       length="50"
-                      lineageId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].Columns[SiteName]"
+                      lineageId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].Columns[SiteName]"
                       name="SiteName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].Columns[SourceName]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].Columns[SourceName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[SourceName]"
+                      externalMetadataColumnId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[SourceName]"
                       length="4000"
-                      lineageId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].Columns[SourceName]"
+                      lineageId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].Columns[SourceName]"
                       name="SourceName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].Columns[ProductName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      externalMetadataColumnId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
                       length="50"
-                      lineageId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      lineageId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].Columns[ProductName]"
                       name="ProductName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].Columns[CustomerSourcingPolicyStatus]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].Columns[CustomerSourcingPolicyStatus]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[CustomerSourcingPolicyStatus]"
+                      externalMetadataColumnId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[CustomerSourcingPolicyStatus]"
                       length="7"
-                      lineageId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].Columns[CustomerSourcingPolicyStatus]"
+                      lineageId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].Columns[CustomerSourcingPolicyStatus]"
                       name="CustomerSourcingPolicyStatus"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].Columns[UnitSourcingCost]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].Columns[UnitSourcingCost]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[UnitSourcingCost]"
-                      lineageId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].Columns[UnitSourcingCost]"
+                      externalMetadataColumnId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[UnitSourcingCost]"
+                      lineageId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].Columns[UnitSourcingCost]"
                       name="UnitSourcingCost"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[SiteName]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[SiteName]"
                       dataType="wstr"
                       length="50"
                       name="SiteName" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[SourceName]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[SourceName]"
                       dataType="wstr"
                       length="255"
                       name="SourceName" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
                       dataType="wstr"
                       length="50"
                       name="ProductName" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[CustomerSourcingPolicyStatus]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[CustomerSourcingPolicyStatus]"
                       codePage="1252"
                       dataType="str"
                       length="7"
                       name="CustomerSourcingPolicyStatus" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[UnitSourcingCost]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[UnitSourcingCost]"
                       dataType="r8"
                       name="UnitSourcingCost" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Error Output].Columns[SiteName]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Error Output].Columns[SiteName]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Error Output].Columns[SiteName]"
+                      lineageId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Error Output].Columns[SiteName]"
                       name="SiteName" />
                     <outputColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Error Output].Columns[SourceName]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Error Output].Columns[SourceName]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Error Output].Columns[SourceName]"
+                      lineageId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Error Output].Columns[SourceName]"
                       name="SourceName" />
                     <outputColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Error Output].Columns[ProductName]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      lineageId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Error Output].Columns[ProductName]"
                       name="ProductName" />
                     <outputColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Error Output].Columns[UnitSourcingCost]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Error Output].Columns[UnitSourcingCost]"
                       dataType="r8"
-                      lineageId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Error Output].Columns[UnitSourcingCost]"
+                      lineageId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Error Output].Columns[UnitSourcingCost]"
                       name="UnitSourcingCost" />
                     <outputColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Error Output].Columns[CustomerSourcingPolicyStatus]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Error Output].Columns[CustomerSourcingPolicyStatus]"
                       codePage="1252"
                       dataType="str"
                       length="7"
-                      lineageId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Error Output].Columns[CustomerSourcingPolicyStatus]"
+                      lineageId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Error Output].Columns[CustomerSourcingPolicyStatus]"
                       name="CustomerSourcingPolicyStatus" />
                     <outputColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1431,7 +1416,7 @@ FROM opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 --  SCD_tra
               </outputs>
             </component>
             <component
-              refId="Package\Customer sourcing 1\into base-no"
+              refId="Package\Customer sourcing\into base-no"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -1488,190 +1473,190 @@ FROM opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 --  SCD_tra
               </properties>
               <connections>
                 <connection
-                  refId="Package\Customer sourcing 1\into base-no.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1]"
+                  refId="Package\Customer sourcing\into base-no.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1 test]"
+                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1 test]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input]"
+                  refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].Columns[ProductName]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].Columns[ProductName]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="ProductName"
-                      externalMetadataColumnId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
-                      lineageId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].Columns[ProductName]" />
+                      externalMetadataColumnId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      lineageId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].Columns[ProductName]" />
                     <inputColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].Columns[SiteName]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].Columns[SiteName]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="SiteName"
-                      externalMetadataColumnId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[SiteName]"
-                      lineageId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].Columns[SiteName]" />
+                      externalMetadataColumnId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[SiteName]"
+                      lineageId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].Columns[SiteName]" />
                     <inputColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].Columns[SourceName]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].Columns[SourceName]"
                       cachedDataType="wstr"
                       cachedLength="4000"
                       cachedName="SourceName"
-                      externalMetadataColumnId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[SourceName]"
-                      lineageId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].Columns[SourceName]" />
+                      externalMetadataColumnId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[SourceName]"
+                      lineageId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].Columns[SourceName]" />
                     <inputColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].Columns[UnitSourcingCost]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].Columns[UnitSourcingCost]"
                       cachedDataType="r8"
                       cachedName="UnitSourcingCost"
-                      externalMetadataColumnId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[UnitSourcingCost]"
-                      lineageId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output].Columns[UnitSourcingCost]" />
+                      externalMetadataColumnId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[UnitSourcingCost]"
+                      lineageId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output].Columns[UnitSourcingCost]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
                       dataType="wstr"
                       length="100"
                       name="ProductName" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[SiteName]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[SiteName]"
                       dataType="wstr"
                       length="100"
                       name="SiteName" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[CustomerSourcingPolicyID]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[CustomerSourcingPolicyID]"
                       dataType="i4"
                       name="CustomerSourcingPolicyID" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[CustomerSourcingPolicy]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[CustomerSourcingPolicy]"
                       dataType="wstr"
                       length="100"
                       name="CustomerSourcingPolicy" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[SourceName]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[SourceName]"
                       dataType="wstr"
                       length="100"
                       name="SourceName" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[SourceLeadTime]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[SourceLeadTime]"
                       dataType="wstr"
                       length="100"
                       name="SourceLeadTime" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[UnitSourcingCost]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[UnitSourcingCost]"
                       dataType="wstr"
                       length="255"
                       name="UnitSourcingCost" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[AllowBackOrders]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[AllowBackOrders]"
                       dataType="bool"
                       name="AllowBackOrders" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[MaxSourcingDistance]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[MaxSourcingDistance]"
                       dataType="wstr"
                       length="100"
                       name="MaxSourcingDistance" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[CustomerSourcingPolicyStatus]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[CustomerSourcingPolicyStatus]"
                       dataType="wstr"
                       length="25"
                       name="CustomerSourcingPolicyStatus" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[CustomerSourcingPolicyParameter]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[CustomerSourcingPolicyParameter]"
                       dataType="wstr"
                       length="100"
                       name="CustomerSourcingPolicyParameter" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[CustomerSourcingPolicyNotes]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[CustomerSourcingPolicyNotes]"
                       dataType="nText"
                       name="CustomerSourcingPolicyNotes" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[MinimumOrderQty]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[MinimumOrderQty]"
                       dataType="wstr"
                       length="100"
                       name="MinimumOrderQty" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[OrderLotSize]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[OrderLotSize]"
                       dataType="wstr"
                       length="100"
                       name="OrderLotSize" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[FixedOrderProcessingTime]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[FixedOrderProcessingTime]"
                       dataType="wstr"
                       length="100"
                       name="FixedOrderProcessingTime" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[UnitOrderProcessingTime]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[UnitOrderProcessingTime]"
                       dataType="wstr"
                       length="100"
                       name="UnitOrderProcessingTime" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[ProbabilityOfBalking]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[ProbabilityOfBalking]"
                       dataType="r8"
                       name="ProbabilityOfBalking" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[GuaranteedServiceTime]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[GuaranteedServiceTime]"
                       dataType="wstr"
                       length="150"
                       name="GuaranteedServiceTime" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[FixedSourcingCost]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[FixedSourcingCost]"
                       dataType="wstr"
                       length="100"
                       name="FixedSourcingCost" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[IgnoreWhenDown]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[IgnoreWhenDown]"
                       dataType="wstr"
                       length="10"
                       name="IgnoreWhenDown" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[UnitSourcingCost_Numeric]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[UnitSourcingCost_Numeric]"
                       dataType="numeric"
                       name="UnitSourcingCost_Numeric"
                       precision="19"
                       scale="4" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[FixedSourcingCost_Numeric]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[FixedSourcingCost_Numeric]"
                       dataType="numeric"
                       name="FixedSourcingCost_Numeric"
                       precision="19"
                       scale="4" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[SourceLeadTime_Numeric]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[SourceLeadTime_Numeric]"
                       dataType="numeric"
                       name="SourceLeadTime_Numeric"
                       precision="19"
                       scale="4" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[UnitOrderProcessingTime_Numeric]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[UnitOrderProcessingTime_Numeric]"
                       dataType="numeric"
                       name="UnitOrderProcessingTime_Numeric"
                       precision="19"
                       scale="4" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[FixedOrderProcessingTime_Numeric]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[FixedOrderProcessingTime_Numeric]"
                       dataType="numeric"
                       name="FixedOrderProcessingTime_Numeric"
                       precision="19"
                       scale="4" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[GuaranteedServiceTime_Numeric]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[GuaranteedServiceTime_Numeric]"
                       dataType="numeric"
                       name="GuaranteedServiceTime_Numeric"
                       precision="19"
                       scale="4" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[MaxSourcingDistance_Numeric]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[MaxSourcingDistance_Numeric]"
                       dataType="numeric"
                       name="MaxSourcingDistance_Numeric"
                       precision="19"
                       scale="4" />
                     <externalMetadataColumn
-                      refId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[MinimumOrderQty_Numeric]"
+                      refId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[MinimumOrderQty_Numeric]"
                       dataType="numeric"
                       name="MinimumOrderQty_Numeric"
                       precision="19"
@@ -1681,22 +1666,22 @@ FROM opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 --  SCD_tra
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Customer sourcing 1\into base-no.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Customer sourcing\into base-no.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Customer sourcing 1\into base-no.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Customer sourcing\into base-no.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Customer sourcing 1\into base-no.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Customer sourcing\into base-no.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Customer sourcing 1\into base-no.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Customer sourcing\into base-no.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Customer sourcing 1\into base-no.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Customer sourcing\into base-no.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1707,10 +1692,10 @@ FROM opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 --  SCD_tra
           </components>
           <paths>
             <path
-              refId="Package\Customer sourcing 1.Paths[OLE DB Source Output]"
-              endId="Package\Customer sourcing 1\into base-no.Inputs[OLE DB Destination Input]"
+              refId="Package\Customer sourcing.Paths[OLE DB Source Output]"
+              endId="Package\Customer sourcing\into base-no.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
-              startId="Package\Customer sourcing 1\from Llama01.Outputs[OLE DB Source Output]" />
+              startId="Package\Customer sourcing\from Llama01.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1719,7 +1704,6 @@ FROM opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 --  SCD_tra
       DTS:refId="Package\Flow constraint"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{413F0D6C-5C1D-48F7-82CA-CD95C8CB4EB9}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -1774,7 +1758,7 @@ from (
 		, cast('period_001' as nvarchar(50)) as periodname
 
 	from	
-		opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+		SCD_Trans_Policies_V2 as a
 
 	where 
 		baseline_flag = 'y'
@@ -1798,7 +1782,7 @@ from (
 		, cast('period_001' as nvarchar(50)) as periodname
 
 	from
-		opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+		SCD_Trans_Policies_V2 as a
 	
 	where 
 		baseline_flag = 'y' 
@@ -1821,7 +1805,7 @@ from (
 		, cast('period_001' as nvarchar(50)) as periodname
 
 	from 
-		opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+		SCD_Trans_Policies_V2 as a
 
 	where 
 		baseline_flag = 'y'  
@@ -1981,7 +1965,7 @@ from (
                     <externalMetadataColumn
                       refId="Package\Flow constraint\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[destinationsite]"
                       dataType="wstr"
-                      length="31"
+                      length="271"
                       name="destinationsite" />
                     <externalMetadataColumn
                       refId="Package\Flow constraint\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[productname]"
@@ -2037,7 +2021,7 @@ from (
                     <outputColumn
                       refId="Package\Flow constraint\from Llama01.Outputs[OLE DB Source Error Output].Columns[destinationsite]"
                       dataType="wstr"
-                      length="31"
+                      length="271"
                       lineageId="Package\Flow constraint\from Llama01.Outputs[OLE DB Source Error Output].Columns[destinationsite]"
                       name="destinationsite" />
                     <outputColumn
@@ -2147,8 +2131,8 @@ from (
               <connections>
                 <connection
                   refId="Package\Flow constraint\into base-no.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1]"
+                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1 test]"
+                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1 test]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2343,7 +2327,6 @@ from (
       DTS:refId="Package\Flow count constraint"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{B46E78F2-07F8-417C-B9B1-F73AB8375A4E}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -2412,7 +2395,7 @@ SELECT
         --,CAST(NULL AS NVARCHAR(25)) AS [CollectionBasisMode]
 
 FROM 
-           opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2
+           SCD_Trans_Policies_V2
 where 
     baseline_flag = 'y'
 
@@ -2837,8 +2820,8 @@ DestinationSite</property>
               <connections>
                 <connection
                   refId="Package\Flow count constraint\into base-no.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1]"
+                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1 test]"
+                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1 test]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3089,7 +3072,6 @@ DestinationSite</property>
       DTS:refId="Package\group"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{448BD722-5319-4BCD-B9D4-5167E1D947EB}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -3156,7 +3138,7 @@ SELECT distinct
 	,left(dr,(charindex('_',dr,1))-1) AS [GroupName]
 
 
-FROM opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+FROM SCD_Trans_Policies_V2 as a
   
 
 ) AS a</property>
@@ -3280,7 +3262,7 @@ FROM opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD
                     <externalMetadataColumn
                       refId="Package\group\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[GroupName]"
                       dataType="wstr"
-                      length="31"
+                      length="271"
                       name="GroupName" />
                   </externalMetadataColumns>
                 </output>
@@ -3319,7 +3301,7 @@ FROM opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD
                     <outputColumn
                       refId="Package\group\from Llama01.Outputs[OLE DB Source Error Output].Columns[GroupName]"
                       dataType="wstr"
-                      length="31"
+                      length="271"
                       lineageId="Package\group\from Llama01.Outputs[OLE DB Source Error Output].Columns[GroupName]"
                       name="GroupName" />
                     <outputColumn
@@ -3398,8 +3380,8 @@ FROM opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD
               <connections>
                 <connection
                   refId="Package\group\into base-no.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1]"
+                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1 test]"
+                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1 test]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3516,7 +3498,6 @@ FROM opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD
       DTS:refId="Package\group members"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{552E580B-ECB2-4FD5-8EAC-C09A9D01DA11}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -3561,7 +3542,7 @@ FROM (
 			left(dr,(charindex('_',dr,1))-1) AS [GroupName]
 			,[DR] AS [MemberName]
 
-		FROM opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+		FROM SCD_Trans_Policies_V2 as a
 
 		UNION 
 		
@@ -3656,12 +3637,12 @@ FROM (
                     <externalMetadataColumn
                       refId="Package\group members\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[GroupName]"
                       dataType="wstr"
-                      length="31"
+                      length="271"
                       name="GroupName" />
                     <externalMetadataColumn
                       refId="Package\group members\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[MemberName]"
                       dataType="wstr"
-                      length="31"
+                      length="271"
                       name="MemberName" />
                   </externalMetadataColumns>
                 </output>
@@ -3678,13 +3659,13 @@ FROM (
                     <outputColumn
                       refId="Package\group members\from Llama01.Outputs[OLE DB Source Error Output].Columns[GroupName]"
                       dataType="wstr"
-                      length="31"
+                      length="271"
                       lineageId="Package\group members\from Llama01.Outputs[OLE DB Source Error Output].Columns[GroupName]"
                       name="GroupName" />
                     <outputColumn
                       refId="Package\group members\from Llama01.Outputs[OLE DB Source Error Output].Columns[MemberName]"
                       dataType="wstr"
-                      length="31"
+                      length="271"
                       lineageId="Package\group members\from Llama01.Outputs[OLE DB Source Error Output].Columns[MemberName]"
                       name="MemberName" />
                     <outputColumn
@@ -3763,8 +3744,8 @@ FROM (
               <connections>
                 <connection
                   refId="Package\group members\into base-no.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1]"
+                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1 test]"
+                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1 test]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3850,7 +3831,6 @@ FROM (
       DTS:refId="Package\Prod constraints"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{28903D41-CBBC-47D5-87FC-E70A08D4593C}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -4171,8 +4151,8 @@ group by
               <connections>
                 <connection
                   refId="Package\Prod constraints\into base-no.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1]"
+                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1 test]"
+                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1 test]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4349,7 +4329,6 @@ group by
       DTS:refId="Package\Prod policies"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{C12BBFAE-775C-46E1-8EA3-0CEFE23EED9E}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -4391,7 +4370,7 @@ group by
                  
 
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 
 group by 
 	future_scg_name
@@ -4405,7 +4384,7 @@ select distinct
                  
 
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 
 group by 
 	future_scg_name
@@ -4419,7 +4398,7 @@ select distinct
                  
 
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 
 group by 
 	future_scg_name</property>
@@ -4607,8 +4586,8 @@ group by
               <connections>
                 <connection
                   refId="Package\Prod policies\into base-no.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1]"
+                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1 test]"
+                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1 test]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4784,7 +4763,6 @@ group by
       DTS:refId="Package\Production"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{fcaefe72-ee70-4e32-9002-2a91ddf22a03}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -4826,7 +4804,7 @@ group by
 		, cast('1' as nvarchar(50)) as [Occurrences] 
 		, cast('include' as nvarchar(50)) as [status]
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a  --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 
 union all
 
@@ -4837,7 +4815,7 @@ select distinct
 		, cast('1' as nvarchar(50)) as [Occurrences] 
 		, cast('include' as nvarchar(50)) as [status]
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a  --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 
 union all
 
@@ -4848,7 +4826,7 @@ select distinct
 		, cast('1' as nvarchar(50)) as [Occurrences] 
 		, cast('include' as nvarchar(50)) as [status]
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a  --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a</property>
+	SCD_Trans_Policies_V2 as a</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -5075,8 +5053,8 @@ from
               <connections>
                 <connection
                   refId="Package\Production\into base-no.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1]"
+                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1 test]"
+                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1 test]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -5263,7 +5241,6 @@ from
       DTS:refId="Package\Products"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{0DF31D5A-A705-46EF-B099-83A50A0D8495}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -5449,8 +5426,8 @@ select cast('Frozen'  as nvarchar(50)) as [ProductName]</property>
               <connections>
                 <connection
                   refId="Package\Products\into base-no 4.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1]"
+                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1 test]"
+                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1 test]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -5673,7 +5650,6 @@ select cast('Frozen'  as nvarchar(50)) as [ProductName]</property>
       DTS:refId="Package\Site sourcing policies"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{A06A501E-AD97-44A8-9D95-E02AEC0036C8}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -5717,7 +5693,7 @@ select cast('Frozen'  as nvarchar(50)) as [ProductName]</property>
 	, cast(0 as bit) as AllowBackOrders
     , cast('Include' as nvarchar(50)) as [SourcingPolicyStatus]
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 
 group by 
 	future_scg_name
@@ -5734,7 +5710,7 @@ select distinct
 	, cast(0 as bit) as AllowBackOrders
     , cast('Include' as nvarchar(50)) as [SourcingPolicyStatus]
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 
 group by 
 	future_scg_name
@@ -5752,7 +5728,7 @@ select distinct
 	, cast(0 as bit) as AllowBackOrders
     , cast('Include' as nvarchar(50)) as [SourcingPolicyStatus]
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 
 group by 
 	future_scg_name</property>
@@ -6000,8 +5976,8 @@ group by
               <connections>
                 <connection
                   refId="Package\Site sourcing policies\into base-no.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1]"
+                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1 test]"
+                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1 test]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -6248,7 +6224,6 @@ group by
       DTS:refId="Package\Sites 1"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{A7B9C7FA-2149-49D0-8081-3B24CAD135F8}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -6287,7 +6262,7 @@ group by
 	,left([sitename],charindex('_', [sitename])-1) as current_opco
 	,[sitename] as current_opco_name
 	,round(sum([reduced_opex]),2) as sitefixedoperatingcost
-	,round(sum(total_severance_cost),2) as siteclosingcost 
+	, ((total_severance_cost) + (ee.fmv))/30 as siteclosingcost --Disposal value and severance cost are depreciated at 30 years rate on a straight-line basis
 from
 (
 	select distinct
@@ -6318,9 +6293,11 @@ from
 			else b.[lon]
 		end as [sitelongitude]
 		,cast('include' as nvarchar(50)) as [sitestatus]
+		, cast('' as nvarchar(50)) as [CapitalInvestmentCapCost]
+		
 		  
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a  --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 		left join [dbo].[opco_master_data] as b
 			on left([future_scg_name],charindex('_', [future_scg_name])-1) = cast(b.[opco_num] as nvarchar(10))
    )aa
@@ -6332,6 +6309,8 @@ inner join dbo.scd_cto_opex_opco cc
 	on bb.opco_num = cc.opco_num
 inner join dbo.combined_severance_cost dd
 	on aa.[sitename] = dd.opco and dd.Flag = 'remove'
+inner join combined_fmv ee 
+	on aa.sitename = ee.scg_name
 
 where 
 	cc.cto_opt_cls = 'closure value'
@@ -6346,11 +6325,14 @@ group by
 	, aa.sitezip
 	, aa.[sitestate]
 	, aa.[sitestatus]
+	, aa.CapitalInvestmentCapCost
+	, dd.total_severance_cost
+	, ee.fmv
 
 union all 
 
 select distinct
-		( [future_scg_name])+'_C' as [sitename] 
+		( ltrim(rtrim([future_scg_name])))+'_C' as [sitename] 
 		, cast(' ' as nvarchar(50)) as siteaddress 
 		, cast(' ' as nvarchar(50)) as sitecity 
 		, cast(' ' as nvarchar(50)) as sitestate 
@@ -6359,18 +6341,19 @@ select distinct
 		, cast(' ' as nvarchar(50)) as [sitelatitude] 
 		, cast(' ' as nvarchar(50)) as [sitelongitude] 
 		, cast('include' as nvarchar(50)) as [sitestatus]
+		,( ltrim(rtrim([future_scg_name])))+'_C_CapEx' as [CapitalInvestmentCapCost]
 		,cast(' ' as nvarchar(50)) as current_opco
 		,cast(' ' as nvarchar(50))as current_opco_name
 		,0 as sitefixedoperatingcost
 		,0 as siteclosingcost
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a  --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 
 
 union all 
 
 select distinct
-		( [future_scg_name])+'_D' as [sitename] 
+		( ltrim(rtrim([future_scg_name])))+'_D' as [sitename] 
 		, cast(' ' as nvarchar(50)) as siteaddress 
 		, cast(' ' as nvarchar(50)) as sitecity 
 		, cast(' ' as nvarchar(50)) as sitestate 
@@ -6379,17 +6362,18 @@ select distinct
 		, cast(' ' as nvarchar(50)) as [sitelatitude] 
 		, cast(' ' as nvarchar(50)) as [sitelongitude] 
 		, cast('include' as nvarchar(50)) as [sitestatus]
+		, ( ltrim(rtrim([future_scg_name])))+'_D_CapEx' as [CapitalInvestmentCapCost]
 		,cast(' ' as nvarchar(50)) as current_opco
 		,cast(' ' as nvarchar(50))as current_opco_name
 		,0 as sitefixedoperatingcost
 		,0 as siteclosingcost
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a  --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 
 union all 
 
 select distinct
-		( [future_scg_name])+'_F' as [sitename] 
+		( ltrim(rtrim([future_scg_name])))+'_F' as [sitename] 
 		, cast(' ' as nvarchar(50)) as siteaddress 
 		, cast(' ' as nvarchar(50)) as sitecity 
 		, cast(' ' as nvarchar(50)) as sitestate 
@@ -6398,12 +6382,13 @@ select distinct
 		, cast(' ' as nvarchar(50)) as [sitelatitude] 
 		, cast(' ' as nvarchar(50)) as [sitelongitude] 
 		, cast('include' as nvarchar(50)) as [sitestatus]
+		, ( ltrim(rtrim([future_scg_name])))+'_F_CapEx' as [CapitalInvestmentCapCost]
 		,cast(' ' as nvarchar(50)) as current_opco
 		,cast(' ' as nvarchar(50))as current_opco_name
 		,0 as sitefixedoperatingcost
 		,0 as siteclosingcost
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a  --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a</property>
+	SCD_Trans_Policies_V2 as a</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -6546,6 +6531,16 @@ from
                       lineageId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].Columns[siteclosingcost]"
                       name="siteclosingcost"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].Columns[CapitalInvestmentCapCost]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].ExternalColumns[CapitalInvestmentCapCost]"
+                      length="261"
+                      lineageId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].Columns[CapitalInvestmentCapCost]"
+                      name="CapitalInvestmentCapCost"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -6611,6 +6606,11 @@ from
                       refId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].ExternalColumns[siteclosingcost]"
                       dataType="r8"
                       name="siteclosingcost" />
+                    <externalMetadataColumn
+                      refId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].ExternalColumns[CapitalInvestmentCapCost]"
+                      dataType="wstr"
+                      length="263"
+                      name="CapitalInvestmentCapCost" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -6670,6 +6670,12 @@ from
                       length="50"
                       lineageId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Error Output].Columns[sitestatus]"
                       name="sitestatus" />
+                    <outputColumn
+                      refId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Error Output].Columns[CapitalInvestmentCapCost]"
+                      dataType="wstr"
+                      length="263"
+                      lineageId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Error Output].Columns[CapitalInvestmentCapCost]"
+                      name="CapitalInvestmentCapCost" />
                     <outputColumn
                       refId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -6757,8 +6763,8 @@ from
               <connections>
                 <connection
                   refId="Package\Sites 1\Sites into base-no.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1]"
+                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1 test]"
+                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1 test]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -6844,6 +6850,13 @@ from
                       cachedName="siteclosingcost"
                       externalMetadataColumnId="Package\Sites 1\Sites into base-no.Inputs[OLE DB Destination Input].ExternalColumns[SiteClosingCost]"
                       lineageId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].Columns[siteclosingcost]" />
+                    <inputColumn
+                      refId="Package\Sites 1\Sites into base-no.Inputs[OLE DB Destination Input].Columns[CapitalInvestmentCapCost]"
+                      cachedDataType="wstr"
+                      cachedLength="261"
+                      cachedName="CapitalInvestmentCapCost"
+                      externalMetadataColumnId="Package\Sites 1\Sites into base-no.Inputs[OLE DB Destination Input].ExternalColumns[CapitalInvestmentCapCost]"
+                      lineageId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].Columns[CapitalInvestmentCapCost]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -7242,17 +7255,17 @@ select distinct
 	, cast('0' as nvarchar(50)) as Cost
 
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 
 union all 
 
 select distinct
 	[future_scg_name]+'_C_CapEx' AS [StepCostName]
-	, c.[Throughout Capacity Based on Avg] as MinimumThroughput
+	, isnull(c.[Throughout Capacity Based on Avg],0) as MinimumThroughput
 	, b.amortized_expansion_cost as Cost
 
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 		inner join combined_expansion_cost as b on a.future_scg_name =b.scg_name and b.temp = 'Cooler'
 		inner join national_network_capacities_clean as c on a.future_scg_name = c.SiteName and ProductName = 'Cool'		
 
@@ -7266,17 +7279,17 @@ select distinct
 	, cast('0' as nvarchar(50)) as Cost
 
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 
 union all 
 
 select distinct
 	[future_scg_name]+'_D_CapEx' AS [StepCostName]
-	, c.[Throughout Capacity Based on Avg] as MinimumThroughput
+	, isnull(c.[Throughout Capacity Based on Avg],0) as MinimumThroughput
 	, b.amortized_expansion_cost as Cost
 
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 		inner join combined_expansion_cost as b on a.future_scg_name =b.scg_name and b.temp = 'dry'
 		inner join national_network_capacities_clean as c on a.future_scg_name = c.SiteName and ProductName = 'Dry'		
 
@@ -7290,17 +7303,17 @@ select distinct
 	, cast('0' as nvarchar(50)) as Cost
 
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 
 union all 
 
 select distinct
 	[future_scg_name]+'_F_CapEx' AS [StepCostName]
-	, c.[Throughout Capacity Based on Avg] as MinimumThroughput
+	, isnull(c.[Throughout Capacity Based on Avg],0) as MinimumThroughput
 	, b.amortized_expansion_cost as Cost
 
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 		inner join combined_expansion_cost as b on a.future_scg_name =b.scg_name and b.temp = 'freezer'
 		inner join national_network_capacities_clean as c on a.future_scg_name = c.SiteName and ProductName = 'Frozen'		
 
@@ -7483,8 +7496,8 @@ from
               <connections>
                 <connection
                   refId="Package\Step cost\into base-no.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1]"
+                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1 test]"
+                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1 test]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -7503,6 +7516,18 @@ from
                       cachedName="StepCostName"
                       externalMetadataColumnId="Package\Step cost\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[StepCostName]"
                       lineageId="Package\Step cost\from Llama01.Outputs[OLE DB Source Output].Columns[StepCostName]" />
+                    <inputColumn
+                      refId="Package\Step cost\into base-no.Inputs[OLE DB Destination Input].Columns[MinimumThroughput]"
+                      cachedDataType="r8"
+                      cachedName="MinimumThroughput"
+                      externalMetadataColumnId="Package\Step cost\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[MinimumThroughput]"
+                      lineageId="Package\Step cost\from Llama01.Outputs[OLE DB Source Output].Columns[MinimumThroughput]" />
+                    <inputColumn
+                      refId="Package\Step cost\into base-no.Inputs[OLE DB Destination Input].Columns[Cost]"
+                      cachedDataType="r8"
+                      cachedName="Cost"
+                      externalMetadataColumnId="Package\Step cost\into base-no.Inputs[OLE DB Destination Input].ExternalColumns[Cost]"
+                      lineageId="Package\Step cost\from Llama01.Outputs[OLE DB Source Output].Columns[Cost]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -7568,7 +7593,6 @@ from
       DTS:refId="Package\Step cost def"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{56b341c1-a954-4a8d-b38f-ad7d18783cc3}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -7611,7 +7635,7 @@ from
 	, cast('Quantity' as nvarchar(50)) as ThroughputBasis
 
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 
 group by 
 	future_scg_name
@@ -7626,7 +7650,7 @@ select distinct
 	, cast('Quantity' as nvarchar(50)) as ThroughputBasis
 
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 
 group by 
 	future_scg_name
@@ -7641,7 +7665,7 @@ select distinct
 	, cast('Quantity' as nvarchar(50)) as ThroughputBasis
 
 from 
-	opco_zip_mps_scd_trans_policies_v3 as a --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2 as a
+	SCD_Trans_Policies_V2 as a
 
 group by 
 	future_scg_name</property>
@@ -7871,8 +7895,8 @@ group by
               <connections>
                 <connection
                   refId="Package\Step cost def\into base-no.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1]"
+                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 1 test]"
+                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 1 test]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -7994,7 +8018,6 @@ group by
       DTS:refId="Package\Trans Policy FS OPCO"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{360B10E2-55B1-4870-AA0A-1509ED4538ED}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -8051,7 +8074,7 @@ group by
 	, cast('Include' as nvarchar(50)) as [TransportationPolicyStatus]
 	, cast('Baseline' as nvarchar(50)) as [TransportationPolicyNotes]
 from
-	opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2
+	SCD_Trans_Policies_V2
 where 
 	baseline_flag = 'y' 
 
@@ -8079,7 +8102,7 @@ select distinct
 	, cast('Exclude' as nvarchar(50)) as [TransportationPolicyStatus]
 	, cast('Future' as nvarchar(50)) as [TransportationPolicyNotes]
 from
-	opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2
+	SCD_Trans_Policies_V2
 
 union all
 
@@ -8105,7 +8128,7 @@ select distinct
 	, cast('Include' as nvarchar(50)) as [TransportationPolicyStatus]
 	, cast('xfer' as nvarchar(50)) as [TransportationPolicyNotes]
 from
-	opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2
+	SCD_Trans_Policies_V2
 
 
 union all
@@ -8129,10 +8152,10 @@ select distinct
 	, round(0,3) as [VariableTransportationCost]
 	, cast('EA' as nvarchar(50)) AS [VariableCostBasis]
 
-	, cast('Exclude' as nvarchar(50)) as [TransportationPolicyStatus]
+	, cast('Include' as nvarchar(50)) as [TransportationPolicyStatus]
 	, cast('xfer' as nvarchar(50)) as [TransportationPolicyNotes]
 from
-	opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2
+	SCD_Trans_Policies_V2
 
 
 union all
@@ -8156,10 +8179,10 @@ select distinct
 	, round(0,3) as [VariableTransportationCost]
 	, cast('EA' as nvarchar(50)) AS [VariableCostBasis]
 
-	, cast('Exclude' as nvarchar(50)) as [TransportationPolicyStatus]
+	, cast('Include' as nvarchar(50)) as [TransportationPolicyStatus]
 	, cast('xfer' as nvarchar(50)) as [TransportationPolicyNotes]
 from
-	opco_zip_mps_scd_trans_policies_v3 --norm_scd_trans_policies_v2 -- SCD_Trans_Policies_V2</property>
+	SCD_Trans_Policies_V2</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -8201,7 +8224,7 @@ from
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].ExternalColumns[SourceSite]"
-                      length="268"
+                      length="257"
                       lineageId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].Columns[SourceSite]"
                       name="SourceSite"
                       truncationRowDisposition="FailComponent" />
@@ -8267,14 +8290,12 @@ from
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].Columns[VariableTransportationCost]"
-                      dataType="numeric"
+                      dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].ExternalColumns[VariableTransportationCost]"
                       lineageId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].Columns[VariableTransportationCost]"
                       name="VariableTransportationCost"
-                      precision="38"
-                      scale="6"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].Columns[VariableCostBasis]"
@@ -8317,7 +8338,7 @@ from
                     <externalMetadataColumn
                       refId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].ExternalColumns[DestinationSite]"
                       dataType="wstr"
-                      length="255"
+                      length="271"
                       name="DestinationSite" />
                     <externalMetadataColumn
                       refId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].ExternalColumns[TransportationPolicy]"
@@ -8379,7 +8400,7 @@ from
                     <outputColumn
                       refId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Error Output].Columns[DestinationSite]"
                       dataType="wstr"
-                      length="255"
+                      length="271"
                       lineageId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Error Output].Columns[DestinationSite]"
                       name="DestinationSite" />
                     <outputColumn
@@ -8511,8 +8532,8 @@ from
               <connections>
                 <connection
                   refId="Package\Trans Policy FS OPCO\into base-no 1.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 2]"
-                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 2]"
+                  connectionManagerID="Package.ConnectionManagers[llama 6 NO 2 test]"
+                  connectionManagerRefId="Package.ConnectionManagers[llama 6 NO 2 test]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -8541,7 +8562,7 @@ from
                     <inputColumn
                       refId="Package\Trans Policy FS OPCO\into base-no 1.Inputs[OLE DB Destination Input].Columns[SourceSite]"
                       cachedDataType="wstr"
-                      cachedLength="268"
+                      cachedLength="257"
                       cachedName="SourceSite"
                       externalMetadataColumnId="Package\Trans Policy FS OPCO\into base-no 1.Inputs[OLE DB Destination Input].ExternalColumns[SourceSite]"
                       lineageId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].Columns[SourceSite]" />
@@ -8568,10 +8589,8 @@ from
                       lineageId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].Columns[VariableCostBasis]" />
                     <inputColumn
                       refId="Package\Trans Policy FS OPCO\into base-no 1.Inputs[OLE DB Destination Input].Columns[VariableTransportationCost]"
-                      cachedDataType="numeric"
+                      cachedDataType="r8"
                       cachedName="VariableTransportationCost"
-                      cachedPrecision="38"
-                      cachedScale="6"
                       externalMetadataColumnId="Package\Trans Policy FS OPCO\into base-no 1.Inputs[OLE DB Destination Input].ExternalColumns[VariableTransportationCost]"
                       lineageId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].Columns[VariableTransportationCost]" />
                     <inputColumn
@@ -9178,12 +9197,11 @@ from
       DTS:refId="Package\Truncate Customer demand"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{BFA79205-0546-480D-88DD-2E5952BE979F}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Customer demand"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9195,12 +9213,11 @@ from
       DTS:refId="Package\Truncate Customer sourcing 1"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{2281404C-F1F7-4C09-A72B-5B40C59C43CC}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Customer sourcing 1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9212,12 +9229,11 @@ from
       DTS:refId="Package\Truncate customer table"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{3606CE7C-4707-4778-9785-7223461545F9}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate customer table"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="6">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9229,12 +9245,11 @@ from
       DTS:refId="Package\Truncate flow constraint"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{DC92FAEB-EB50-4B33-BB39-950107C5B94E}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate flow constraint"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9246,12 +9261,11 @@ from
       DTS:refId="Package\Truncate Flow count constr"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{16563DEA-7161-46D7-A423-B517AC1BAC05}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Flow count constr"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="5">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9263,12 +9277,11 @@ from
       DTS:refId="Package\Truncate groups"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{93AD4AB9-968F-4970-91A1-9F5347738832}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate groups"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="8">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9280,12 +9293,11 @@ from
       DTS:refId="Package\Truncate groups members"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{33BC34BA-25C6-4311-A216-12599E360F72}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate groups members"
-      DTS:ThreadHint="6">
+      DTS:ThreadHint="9">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9297,12 +9309,11 @@ from
       DTS:refId="Package\Truncate prod constr table"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{21391BB5-6D65-463F-892F-1B332A0FEEAC}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate prod constr table"
-      DTS:ThreadHint="7">
+      DTS:ThreadHint="10">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9314,12 +9325,11 @@ from
       DTS:refId="Package\Truncate Production"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{b8c26e02-c295-451f-9d39-2861a4e7e499}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Production"
-      DTS:ThreadHint="15">
+      DTS:ThreadHint="12">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9331,12 +9341,11 @@ from
       DTS:refId="Package\Truncate Production Policies"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{9BA91423-0B32-4521-B023-1A330B9AC7D5}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Production Policies"
-      DTS:ThreadHint="8">
+      DTS:ThreadHint="11">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9348,12 +9357,11 @@ from
       DTS:refId="Package\Truncate products"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{ED914648-5537-4218-9EB6-D12A0F8749A7}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate products"
-      DTS:ThreadHint="9">
+      DTS:ThreadHint="7">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9365,12 +9373,11 @@ from
       DTS:refId="Package\Truncate Site Sourcing Policy"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{DDD94198-4385-4F5E-A652-6DEFE24C3466}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Site Sourcing Policy"
-      DTS:ThreadHint="10">
+      DTS:ThreadHint="15">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9382,12 +9389,11 @@ from
       DTS:refId="Package\Truncate Sites"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{A4E347B1-EDD1-441A-8645-227CED7801A7}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Sites"
-      DTS:ThreadHint="11">
+      DTS:ThreadHint="13">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9403,7 +9409,7 @@ from
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Step Cost"
-      DTS:ThreadHint="13">
+      DTS:ThreadHint="14">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9415,12 +9421,11 @@ from
       DTS:refId="Package\Truncate Step Cost Def"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{48c1fd7e-b619-4f9f-b909-8282a6214ec3}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Step Cost Def"
-      DTS:ThreadHint="14">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9432,12 +9437,11 @@ from
       DTS:refId="Package\Truncate transpolicy table"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{78DE2A3F-94CF-4028-98D7-826A53446D84}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate transpolicy table"
-      DTS:ThreadHint="12">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9510,7 +9514,7 @@ from
       DTS:From="Package\Truncate Customer sourcing 1"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1 1 1 1 1 1 1"
-      DTS:To="Package\Customer sourcing 1" />
+      DTS:To="Package\Customer sourcing" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1 1 1 1 1 1 1 1 1]"
       DTS:CreationName=""
@@ -9597,8 +9601,8 @@ from
           Id="Package\Customer demand"
           TopLeft="651,407.5" />
         <NodeLayout
-          Size="176,42"
-          Id="Package\Customer sourcing 1"
+          Size="167,42"
+          Id="Package\Customer sourcing"
           TopLeft="794,644.25" />
         <NodeLayout
           Size="150,42"
@@ -9625,6 +9629,10 @@ from
           Id="Package\Prod policies"
           TopLeft="287.5,647.25" />
         <NodeLayout
+          Size="129,42"
+          Id="Package\Production"
+          TopLeft="1168.25,843.25" />
+        <NodeLayout
           Size="120,42"
           Id="Package\Products"
           TopLeft="951.5,372.229417000509" />
@@ -9636,6 +9644,14 @@ from
           Size="101,42"
           Id="Package\Sites 1"
           TopLeft="309.25,131" />
+        <NodeLayout
+          Size="122,42"
+          Id="Package\Step cost"
+          TopLeft="1385.25,646.25" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Step cost def"
+          TopLeft="1167.25,649.25" />
         <NodeLayout
           Size="181,42"
           Id="Package\Trans Policy FS OPCO"
@@ -9673,6 +9689,10 @@ from
           Id="Package\Truncate prod constr table"
           TopLeft="534.03572500239,51.2058755749236" />
         <NodeLayout
+          Size="174,42"
+          Id="Package\Truncate Production"
+          TopLeft="1153.25,746.25" />
+        <NodeLayout
           Size="221,42"
           Id="Package\Truncate Production Policies"
           TopLeft="272.5,550.25" />
@@ -9688,6 +9708,14 @@ from
           Size="194,42"
           Id="Package\Truncate Sites"
           TopLeft="263.25,48.5" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Truncate Step Cost"
+          TopLeft="1370.25,549.25" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Truncate Step Cost Def"
+          TopLeft="1152.25,552.25" />
         <NodeLayout
           Size="201,42"
           Id="Package\Truncate transpolicy table"
@@ -9860,30 +9888,18 @@ from
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1 1 1 1 1 1 1]"
-          TopLeft="872.5,599.5">
+          TopLeft="875,599.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="9.5,44.75"
+              EndConnector="0,44.75"
               Start="0,0"
-              End="9.5,37.25">
+              End="0,37.25">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.375" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.375"
-                    Point2="0,22.375"
-                    Point3="4,22.375" />
-                  <mssgle:LineSegment
-                    End="5.5,22.375" />
-                  <mssgle:CubicBezierSegment
-                    Point1="5.5,22.375"
-                    Point2="9.5,22.375"
-                    Point3="9.5,26.375" />
-                  <mssgle:LineSegment
-                    End="9.5,37.25" />
+                    End="0,37.25" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10014,14 +10030,6 @@ from
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="188,42"
-          Id="Package\Truncate Step Cost Def"
-          TopLeft="1152.25,552.25" />
-        <NodeLayout
-          Size="141,42"
-          Id="Package\Step cost def"
-          TopLeft="1167.25,649.25" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="1246.25,594.25">
@@ -10056,14 +10064,6 @@ from
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="169,42"
-          Id="Package\Truncate Step Cost"
-          TopLeft="1370.25,549.25" />
-        <NodeLayout
-          Size="122,42"
-          Id="Package\Step cost"
-          TopLeft="1385.25,646.25" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="1454.75,591.25">
@@ -10098,14 +10098,6 @@ from
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="174,42"
-          Id="Package\Truncate Production"
-          TopLeft="1153.25,746.25" />
-        <NodeLayout
-          Size="129,42"
-          Id="Package\Production"
-          TopLeft="1168.25,843.25" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
           TopLeft="1236.5,788.25">
@@ -10135,7 +10127,7 @@ from
     design-time-name="Package\Customer">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="192,42"
           Id="Package\Customer\Customer from Llama01"
@@ -10175,9 +10167,7 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10208,7 +10198,7 @@ from
     design-time-name="Package\Customer demand">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="144,42"
           Id="Package\Customer demand\from Llama01"
@@ -10248,9 +10238,7 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10278,20 +10266,20 @@ from
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Customer sourcing 1">
+    design-time-name="Package\Customer sourcing">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="138,42"
-          Id="Package\Customer sourcing 1\into base-no"
+          Id="Package\Customer sourcing\into base-no"
           TopLeft="235,202" />
         <NodeLayout
           Size="144,42"
-          Id="Package\Customer sourcing 1\from Llama01"
+          Id="Package\Customer sourcing\from Llama01"
           TopLeft="237,91" />
         <EdgeLayout
-          Id="Package\Customer sourcing 1.Paths[OLE DB Source Output]"
+          Id="Package\Customer sourcing.Paths[OLE DB Source Output]"
           TopLeft="306.5,133">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10309,16 +10297,14 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Customer sourcing 1\from Llama01">
+    design-time-name="Package\Customer sourcing\from Llama01">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10326,7 +10312,7 @@ from
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Customer sourcing 1\into base-no">
+    design-time-name="Package\Customer sourcing\into base-no">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10342,7 +10328,7 @@ from
     design-time-name="Package\Flow constraint">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="138,42"
           Id="Package\Flow constraint\into base-no"
@@ -10382,9 +10368,7 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10415,7 +10399,7 @@ from
     design-time-name="Package\Flow count constraint">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="138,42"
           Id="Package\Flow count constraint\into base-no"
@@ -10455,9 +10439,7 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10488,7 +10470,7 @@ from
     design-time-name="Package\group">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="144,42"
           Id="Package\group\from Llama01"
@@ -10528,9 +10510,7 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10561,7 +10541,7 @@ from
     design-time-name="Package\group members">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="138,42"
           Id="Package\group members\into base-no"
@@ -10601,9 +10581,7 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10760,10 +10738,81 @@ from
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\Production">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Production\into base-no"
+          TopLeft="253,210" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Production\from Llama01"
+          TopLeft="237,91" />
+        <EdgeLayout
+          Id="Package\Production.Paths[OLE DB Source Output]"
+          TopLeft="309,133">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13,77"
+              Start="0,0"
+              End="13,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.5"
+                    Point2="0,38.5"
+                    Point3="4,38.5" />
+                  <mssgle:LineSegment
+                    End="9,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9,38.5"
+                    Point2="13,38.5"
+                    Point3="13,42.5" />
+                  <mssgle:LineSegment
+                    End="13,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Production\from Llama01">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Production\into base-no">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Products">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="146,42"
           Id="Package\Products\into base-no 4"
@@ -10803,9 +10852,7 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10975,148 +11022,18 @@ from
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Trans Policy FS OPCO">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="168,42"
-          Id="Package\Trans Policy FS OPCO\from Llama01 1-17"
-          TopLeft="533,85" />
-        <NodeLayout
-          Size="146,42"
-          Id="Package\Trans Policy FS OPCO\into base-no 1"
-          TopLeft="549,203" />
-        <EdgeLayout
-          Id="Package\Trans Policy FS OPCO.Paths[OLE DB Source Output]"
-          TopLeft="619.6,126.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,76.4"
-              Start="0,0"
-              End="0,68.9">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,68.9" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Trans Policy FS OPCO\from Llama01 1-17">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Trans Policy FS OPCO\into base-no 1">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Step cost def">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Step cost def\from Llama01"
-          TopLeft="237,91" />
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Step cost def\into base-no"
-          TopLeft="253,210" />
-        <EdgeLayout
-          Id="Package\Step cost def.Paths[OLE DB Source Output]"
-          TopLeft="309,133">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="13,77"
-              Start="0,0"
-              End="13,69.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,34.5"
-                    Point2="0,38.5"
-                    Point3="4,38.5" />
-                  <mssgle:LineSegment
-                    End="9,38.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="9,38.5"
-                    Point2="13,38.5"
-                    Point3="13,42.5" />
-                  <mssgle:LineSegment
-                    End="13,69.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Step cost def\from Llama01">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Step cost def\into base-no">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\Step cost">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="144,42"
-          Id="Package\Step cost\from Llama01"
-          TopLeft="237,91" />
-        <NodeLayout
           Size="138,42"
           Id="Package\Step cost\into base-no"
           TopLeft="253,210" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Step cost\from Llama01"
+          TopLeft="237,91" />
         <EdgeLayout
           Id="Package\Step cost.Paths[OLE DB Source Output]"
           TopLeft="309,133">
@@ -11176,20 +11093,20 @@ from
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Production">
+    design-time-name="Package\Step cost def">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="144,42"
-          Id="Package\Production\from Llama01"
-          TopLeft="237,91" />
-        <NodeLayout
           Size="138,42"
-          Id="Package\Production\into base-no"
+          Id="Package\Step cost def\into base-no"
           TopLeft="253,210" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Step cost def\from Llama01"
+          TopLeft="237,91" />
         <EdgeLayout
-          Id="Package\Production.Paths[OLE DB Source Output]"
+          Id="Package\Step cost def.Paths[OLE DB Source Output]"
           TopLeft="309,133">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11226,7 +11143,7 @@ from
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Production\from Llama01">
+    design-time-name="Package\Step cost def\from Llama01">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -11234,7 +11151,66 @@ from
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Production\into base-no">
+    design-time-name="Package\Step cost def\into base-no">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Trans Policy FS OPCO">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Trans Policy FS OPCO\from Llama01 1-17"
+          TopLeft="533,85" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Trans Policy FS OPCO\into base-no 1"
+          TopLeft="549,203" />
+        <EdgeLayout
+          Id="Package\Trans Policy FS OPCO.Paths[OLE DB Source Output]"
+          TopLeft="619.6,126.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76.4"
+              Start="0,0"
+              End="0,68.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Trans Policy FS OPCO\from Llama01 1-17">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Trans Policy FS OPCO\into base-no 1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
