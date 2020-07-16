@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="E-Base-tables-single-new-TP"
   DTS:PackageType="5"
-  DTS:VersionBuild="278"
-  DTS:VersionGUID="{D71960C0-EDD4-4CE6-B8F6-7EA5E08BD406}">
+  DTS:VersionBuild="298"
+  DTS:VersionGUID="{AAB3277E-1D23-4600-80D4-CC59E43ED48B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -103,7 +103,7 @@
       DTS:ObjectName="llama 6 NO 1 test">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=ms238scgdb06;Initial Catalog=test-base-no_2F0B7F84769AA0D22972E1BE77CA9AD8B56C4452;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=ms238scgdb06;Initial Catalog=base-no-ev1_08CE190696136E18A4F0F8BDBAEA20644DBA262B;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -113,7 +113,7 @@
       DTS:ObjectName="llama 6 NO 2 test">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=ms238scgdb06;Initial Catalog=test-base-no_2F0B7F84769AA0D22972E1BE77CA9AD8B56C4452;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=ms238scgdb06;Initial Catalog=base-no-ev1_08CE190696136E18A4F0F8BDBAEA20644DBA262B;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -188,7 +188,10 @@
 
 from 
 	
-	SCD_Trans_Policies_V2</property>
+	v1_nominal_transpolicies_rev4_cc
+
+where 
+	len(dr) &gt;= 8</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -230,7 +233,7 @@ from
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Output].ExternalColumns[CustomerName]"
-                      length="271"
+                      length="21"
                       lineageId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Output].Columns[CustomerName]"
                       name="CustomerName"
                       truncationRowDisposition="FailComponent" />
@@ -269,7 +272,7 @@ from
                     <externalMetadataColumn
                       refId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Output].ExternalColumns[CustomerName]"
                       dataType="wstr"
-                      length="271"
+                      length="21"
                       name="CustomerName" />
                     <externalMetadataColumn
                       refId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Output].ExternalColumns[CustomerZipcode]"
@@ -295,7 +298,7 @@ from
                     <outputColumn
                       refId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Error Output].Columns[CustomerName]"
                       dataType="wstr"
-                      length="271"
+                      length="21"
                       lineageId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Error Output].Columns[CustomerName]"
                       name="CustomerName" />
                     <outputColumn
@@ -407,7 +410,7 @@ from
                     <inputColumn
                       refId="Package\Customer\Customer into base-no.Inputs[OLE DB Destination Input].Columns[CustomerName]"
                       cachedDataType="wstr"
-                      cachedLength="271"
+                      cachedLength="21"
                       cachedName="CustomerName"
                       externalMetadataColumnId="Package\Customer\Customer into base-no.Inputs[OLE DB Destination Input].ExternalColumns[CustomerName]"
                       lineageId="Package\Customer\Customer from Llama01.Outputs[OLE DB Source Output].Columns[CustomerName]" />
@@ -681,10 +684,10 @@ from
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT DISTINCT
 	[DR] as [SiteName]
 	,cast('Dry' as nvarchar(50)) AS [ProductName]	
-	,isnull(SUM(dry_bl_cases),0) AS [Demand]
+	,isnull(SUM(dry_pcs),0) AS [Demand]
 	,'' as Mode
 
-FROM	SCD_Trans_Policies_V2 as a
+FROM	v1_nominal_transpolicies_rev4_cc as a
 
 WHERE  
 	baseline_flag = 'y'
@@ -698,10 +701,10 @@ UNION ALL
 SELECT DISTINCT
 	[DR] as [SiteName]
 	,cast('Cool' as nvarchar(50)) AS [ProductName]	
-	,isnull(SUM(cool_bl_cases),0) AS [Demand]
+	,isnull(SUM(cool_pcs),0) AS [Demand]
 	,'' as Mode
 
-FROM	SCD_Trans_Policies_V2 as a
+FROM	v1_nominal_transpolicies_rev4_cc as a
 
 WHERE  
 	baseline_flag = 'y'
@@ -714,10 +717,10 @@ UNION ALL
 SELECT DISTINCT
 	[DR] as [SiteName]
 	,cast('Frozen' as nvarchar(50)) AS [ProductName]	
-	,isnull(SUM(freezer_bl_cases),0) AS [Demand]
+	,isnull(SUM(freezer_pcs),0) AS [Demand]
 	,'' as Mode
 
-FROM	SCD_Trans_Policies_V2 as a
+FROM	v1_nominal_transpolicies_rev4_cc as a
 
 WHERE  
 	baseline_flag = 'y'
@@ -806,7 +809,7 @@ GROUP BY
                     <externalMetadataColumn
                       refId="Package\Customer demand\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[SiteName]"
                       dataType="wstr"
-                      length="271"
+                      length="21"
                       name="SiteName" />
                     <externalMetadataColumn
                       refId="Package\Customer demand\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
@@ -817,8 +820,7 @@ GROUP BY
                       refId="Package\Customer demand\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[Demand]"
                       dataType="numeric"
                       name="Demand"
-                      precision="38"
-                      scale="6" />
+                      precision="38" />
                     <externalMetadataColumn
                       refId="Package\Customer demand\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[Mode]"
                       codePage="1252"
@@ -835,7 +837,7 @@ GROUP BY
                     <outputColumn
                       refId="Package\Customer demand\from Llama01.Outputs[OLE DB Source Error Output].Columns[SiteName]"
                       dataType="wstr"
-                      length="271"
+                      length="21"
                       lineageId="Package\Customer demand\from Llama01.Outputs[OLE DB Source Error Output].Columns[SiteName]"
                       name="SiteName" />
                     <outputColumn
@@ -849,8 +851,7 @@ GROUP BY
                       dataType="numeric"
                       lineageId="Package\Customer demand\from Llama01.Outputs[OLE DB Source Error Output].Columns[Demand]"
                       name="Demand"
-                      precision="38"
-                      scale="6" />
+                      precision="38" />
                     <outputColumn
                       refId="Package\Customer demand\from Llama01.Outputs[OLE DB Source Error Output].Columns[Mode]"
                       codePage="1252"
@@ -1224,7 +1225,7 @@ GROUP BY
 		,round([warehouse_cto_cpc],3) AS [UnitSourcingCost]
 		,'Exclude' as [CustomerSourcingPolicyStatus]
 
-FROM  SCD_trans_policies_v2
+FROM  v1_nominal_transpolicies_rev4_cc
  
 
 UNION ALL
@@ -1236,7 +1237,7 @@ SELECT DISTINCT
 		,round([warehouse_cto_cpc],3) AS [UnitSourcingCost]
 		,'Exclude' as [CustomerSourcingPolicyStatus]
 
-FROM SCD_trans_policies_v2
+FROM v1_nominal_transpolicies_rev4_cc
 
 UNION ALL
 
@@ -1247,7 +1248,7 @@ SELECT DISTINCT
 		,round([warehouse_cto_cpc],3) AS [UnitSourcingCost]
 		,'Exclude' as [CustomerSourcingPolicyStatus]
 
-FROM SCD_trans_policies_v2</property>
+FROM v1_nominal_transpolicies_rev4_cc</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1752,13 +1753,13 @@ from (
 		([future_scg_name]) as [sourcesite]
 		, [dr] as [destinationsite]
 		, cast('dry' as nvarchar(50)) as [productname]
-		, isnull(sum(dry_bl_cases),0) as [flowrequirement]
+		, isnull(sum(dry_pcs),0) as [flowrequirement]
 		, cast('fixed'as nvarchar(50))  as [flowrequirementtype]
 		, cast('include' as nvarchar(50)) as [aggregateflowconstraintstatus]
 		, cast('period_001' as nvarchar(50)) as periodname
 
 	from	
-		SCD_Trans_Policies_V2 as a
+		v1_nominal_transpolicies_rev4_cc as a
 
 	where 
 		baseline_flag = 'y'
@@ -1768,7 +1769,7 @@ from (
 		,[dr]
 
 	having 
-		isnull(sum(dry_bl_cases),0) &gt;0
+		isnull(sum(dry_pcs),0) &gt;0
 
 	union all
 
@@ -1776,13 +1777,13 @@ from (
 		 ([future_scg_name]) as [sourcesite]
 		, [dr] as [destinationsite]
 		, cast('cool' as nvarchar(50)) as [productname]
-		, isnull(sum(cool_bl_cases),0) as [flowrequirement]
+		, isnull(sum(cool_pcs),0) as [flowrequirement]
 		, cast('fixed' as nvarchar(50)) as [flowrequirementtype]
 		, cast('include' as nvarchar(50)) as [aggregateflowconstraintstatus]
 		, cast('period_001' as nvarchar(50)) as periodname
 
 	from
-		SCD_Trans_Policies_V2 as a
+		v1_nominal_transpolicies_rev4_cc as a
 	
 	where 
 		baseline_flag = 'y' 
@@ -1791,7 +1792,7 @@ from (
 		[future_scg_name]
 		, [dr]
 	having 
-		isnull(sum(cool_bl_cases),0) &gt; 0
+		isnull(sum(cool_pcs),0) &gt; 0
 
 	union all
 
@@ -1799,13 +1800,13 @@ from (
 		 ([future_scg_name]) as [sourcesite]
 		, [dr] as [destinationsite]
 		, cast('frozen' as nvarchar(50)) as [productname]
-		, isnull(sum(freezer_bl_cases),0) as [flowrequirement]
+		, isnull(sum(freezer_pcs),0) as [flowrequirement]
 		, cast('fixed' as nvarchar(50)) as [flowrequirementtype]
 		, cast('include' as nvarchar(50)) as [aggregateflowconstraintstatus]
 		, cast('period_001' as nvarchar(50)) as periodname
 
 	from 
-		SCD_Trans_Policies_V2 as a
+		v1_nominal_transpolicies_rev4_cc as a
 
 	where 
 		baseline_flag = 'y'  
@@ -1815,7 +1816,7 @@ from (
 		, [dr]
 
 	having 
-		isnull(sum(freezer_bl_cases),0) &gt; 0
+		isnull(sum(freezer_pcs),0) &gt; 0
 
 ) as a</property>
                 <property
@@ -1965,7 +1966,7 @@ from (
                     <externalMetadataColumn
                       refId="Package\Flow constraint\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[destinationsite]"
                       dataType="wstr"
-                      length="271"
+                      length="21"
                       name="destinationsite" />
                     <externalMetadataColumn
                       refId="Package\Flow constraint\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[productname]"
@@ -1976,8 +1977,7 @@ from (
                       refId="Package\Flow constraint\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[flowrequirement]"
                       dataType="numeric"
                       name="flowrequirement"
-                      precision="38"
-                      scale="6" />
+                      precision="38" />
                     <externalMetadataColumn
                       refId="Package\Flow constraint\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[flowrequirementtype]"
                       dataType="wstr"
@@ -2021,7 +2021,7 @@ from (
                     <outputColumn
                       refId="Package\Flow constraint\from Llama01.Outputs[OLE DB Source Error Output].Columns[destinationsite]"
                       dataType="wstr"
-                      length="271"
+                      length="21"
                       lineageId="Package\Flow constraint\from Llama01.Outputs[OLE DB Source Error Output].Columns[destinationsite]"
                       name="destinationsite" />
                     <outputColumn
@@ -2035,8 +2035,7 @@ from (
                       dataType="numeric"
                       lineageId="Package\Flow constraint\from Llama01.Outputs[OLE DB Source Error Output].Columns[flowrequirement]"
                       name="flowrequirement"
-                      precision="38"
-                      scale="6" />
+                      precision="38" />
                     <outputColumn
                       refId="Package\Flow constraint\from Llama01.Outputs[OLE DB Source Error Output].Columns[flowrequirementtype]"
                       dataType="wstr"
@@ -2395,7 +2394,7 @@ SELECT
         --,CAST(NULL AS NVARCHAR(25)) AS [CollectionBasisMode]
 
 FROM 
-           SCD_Trans_Policies_V2
+           v1_nominal_transpolicies_rev4_cc
 where 
     baseline_flag = 'y'
 
@@ -3138,7 +3137,7 @@ SELECT distinct
 	,left(dr,(charindex('_',dr,1))-1) AS [GroupName]
 
 
-FROM SCD_Trans_Policies_V2 as a
+FROM v1_nominal_transpolicies_rev4_cc as a
   
 
 ) AS a</property>
@@ -3542,7 +3541,7 @@ FROM (
 			left(dr,(charindex('_',dr,1))-1) AS [GroupName]
 			,[DR] AS [MemberName]
 
-		FROM SCD_Trans_Policies_V2 as a
+		FROM v1_nominal_transpolicies_rev4_cc as a
 
 		UNION 
 		
@@ -3866,14 +3865,14 @@ FROM (
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select 
-	sitename 
+	sitename+'_'+left(productname,1) as sitename 
 	, cast('Period_001' as nvarchar(50)) as [PeriodName]
 	, productname 
 	,cast('Max'  as nvarchar(50)) AS [ProductionRequirementType]
 	,cast(''  as nvarchar(50)) AS [Constraint Value]
 	,cast('Exclude'  as nvarchar(50)) AS [AggregateProductionConstraintStatus]
-                   ,cast('1000000000' as nvarchar(50)) as ProductionRequirement
-	--,sum([Throughout Capacity Based on Avg]) as ProductionRequirement
+                --   ,cast('1000000000' as nvarchar(50)) as ProductionRequirement
+	,sum([Throughout Capacity Based on Avg]) as ProductionRequirement
 from 
 	national_network_capacities_clean
 where 
@@ -4003,8 +4002,7 @@ group by
                       name="Constraint Value" />
                     <externalMetadataColumn
                       refId="Package\Prod constraints\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[ProductionRequirement]"
-                      dataType="wstr"
-                      length="50"
+                      dataType="r8"
                       name="ProductionRequirement" />
                     <externalMetadataColumn
                       refId="Package\Prod constraints\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[PeriodName]"
@@ -4014,7 +4012,7 @@ group by
                     <externalMetadataColumn
                       refId="Package\Prod constraints\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[sitename]"
                       dataType="wstr"
-                      length="255"
+                      length="257"
                       name="sitename" />
                     <externalMetadataColumn
                       refId="Package\Prod constraints\from Llama01.Outputs[OLE DB Source Output].ExternalColumns[productname]"
@@ -4036,7 +4034,7 @@ group by
                     <outputColumn
                       refId="Package\Prod constraints\from Llama01.Outputs[OLE DB Source Error Output].Columns[sitename]"
                       dataType="wstr"
-                      length="255"
+                      length="257"
                       lineageId="Package\Prod constraints\from Llama01.Outputs[OLE DB Source Error Output].Columns[sitename]"
                       name="sitename" />
                     <outputColumn
@@ -4071,8 +4069,7 @@ group by
                       name="AggregateProductionConstraintStatus" />
                     <outputColumn
                       refId="Package\Prod constraints\from Llama01.Outputs[OLE DB Source Error Output].Columns[ProductionRequirement]"
-                      dataType="wstr"
-                      length="50"
+                      dataType="r8"
                       lineageId="Package\Prod constraints\from Llama01.Outputs[OLE DB Source Error Output].Columns[ProductionRequirement]"
                       name="ProductionRequirement" />
                     <outputColumn
@@ -4370,7 +4367,7 @@ group by
                  
 
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 
 group by 
 	future_scg_name
@@ -4384,7 +4381,7 @@ select distinct
                  
 
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 
 group by 
 	future_scg_name
@@ -4398,7 +4395,7 @@ select distinct
                  
 
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 
 group by 
 	future_scg_name</property>
@@ -4804,7 +4801,7 @@ group by
 		, cast('1' as nvarchar(50)) as [Occurrences] 
 		, cast('include' as nvarchar(50)) as [status]
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 
 union all
 
@@ -4815,7 +4812,7 @@ select distinct
 		, cast('1' as nvarchar(50)) as [Occurrences] 
 		, cast('include' as nvarchar(50)) as [status]
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 
 union all
 
@@ -4826,7 +4823,7 @@ select distinct
 		, cast('1' as nvarchar(50)) as [Occurrences] 
 		, cast('include' as nvarchar(50)) as [status]
 from 
-	SCD_Trans_Policies_V2 as a</property>
+	v1_nominal_transpolicies_rev4_cc as a</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -5693,7 +5690,7 @@ select cast('Frozen'  as nvarchar(50)) as [ProductName]</property>
 	, cast(0 as bit) as AllowBackOrders
     , cast('Include' as nvarchar(50)) as [SourcingPolicyStatus]
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 
 group by 
 	future_scg_name
@@ -5710,7 +5707,7 @@ select distinct
 	, cast(0 as bit) as AllowBackOrders
     , cast('Include' as nvarchar(50)) as [SourcingPolicyStatus]
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 
 group by 
 	future_scg_name
@@ -5728,7 +5725,7 @@ select distinct
 	, cast(0 as bit) as AllowBackOrders
     , cast('Include' as nvarchar(50)) as [SourcingPolicyStatus]
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 
 group by 
 	future_scg_name</property>
@@ -6262,7 +6259,7 @@ group by
 	,left([sitename],charindex('_', [sitename])-1) as current_opco
 	,[sitename] as current_opco_name
 	,round(sum([reduced_opex]),2) as sitefixedoperatingcost
-	, ((total_severance_cost) + (ee.fmv))/30 as siteclosingcost --Disposal value and severance cost are depreciated at 30 years rate on a straight-line basis
+	, ((total_severance_cost) + -1*(ee.fmv))/30 as siteclosingcost --Disposal value and severance cost are depreciated at 30 years rate on a straight-line basis
 from
 (
 	select distinct
@@ -6292,14 +6289,16 @@ from
 			when left([future_scg_name],charindex('_', [future_scg_name])-1) = '429'  then -91.969370
 			else b.[lon]
 		end as [sitelongitude]
-		,cast('include' as nvarchar(50)) as [sitestatus]
+		--,cast('include' as nvarchar(50)) as [sitestatus]
+		, decision as SiteStatus
 		, cast('' as nvarchar(50)) as [CapitalInvestmentCapCost]
 		
 		  
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 		left join [dbo].[opco_master_data] as b
 			on left([future_scg_name],charindex('_', [future_scg_name])-1) = cast(b.[opco_num] as nvarchar(10))
+		inner join dbo.combined_closure_considerations c on c.opco = a.future_scg_name
    )aa
 
  
@@ -6347,7 +6346,7 @@ select distinct
 		,0 as sitefixedoperatingcost
 		,0 as siteclosingcost
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 
 
 union all 
@@ -6368,7 +6367,7 @@ select distinct
 		,0 as sitefixedoperatingcost
 		,0 as siteclosingcost
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 
 union all 
 
@@ -6388,7 +6387,7 @@ select distinct
 		,0 as sitefixedoperatingcost
 		,0 as siteclosingcost
 from 
-	SCD_Trans_Policies_V2 as a</property>
+	v1_nominal_transpolicies_rev4_cc as a</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -6503,16 +6502,6 @@ from
                       name="sitelongitude"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].Columns[sitestatus]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].ExternalColumns[sitestatus]"
-                      length="50"
-                      lineageId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].Columns[sitestatus]"
-                      name="sitestatus"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].Columns[sitefixedoperatingcost]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
@@ -6540,6 +6529,16 @@ from
                       length="261"
                       lineageId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].Columns[CapitalInvestmentCapCost]"
                       name="CapitalInvestmentCapCost"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].Columns[SiteStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].ExternalColumns[SiteStatus]"
+                      length="255"
+                      lineageId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].Columns[SiteStatus]"
+                      name="SiteStatus"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -6593,11 +6592,6 @@ from
                       dataType="r8"
                       name="sitelongitude" />
                     <externalMetadataColumn
-                      refId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].ExternalColumns[sitestatus]"
-                      dataType="wstr"
-                      length="50"
-                      name="sitestatus" />
-                    <externalMetadataColumn
                       refId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].ExternalColumns[sitefixedoperatingcost]"
                       dataType="numeric"
                       name="sitefixedoperatingcost"
@@ -6611,6 +6605,11 @@ from
                       dataType="wstr"
                       length="263"
                       name="CapitalInvestmentCapCost" />
+                    <externalMetadataColumn
+                      refId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].ExternalColumns[SiteStatus]"
+                      dataType="wstr"
+                      length="255"
+                      name="SiteStatus" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -6665,11 +6664,11 @@ from
                       lineageId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Error Output].Columns[sitelongitude]"
                       name="sitelongitude" />
                     <outputColumn
-                      refId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Error Output].Columns[sitestatus]"
+                      refId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Error Output].Columns[SiteStatus]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Error Output].Columns[sitestatus]"
-                      name="sitestatus" />
+                      length="255"
+                      lineageId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Error Output].Columns[SiteStatus]"
+                      name="SiteStatus" />
                     <outputColumn
                       refId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Error Output].Columns[CapitalInvestmentCapCost]"
                       dataType="wstr"
@@ -6824,12 +6823,12 @@ from
                       externalMetadataColumnId="Package\Sites 1\Sites into base-no.Inputs[OLE DB Destination Input].ExternalColumns[SiteLongitude]"
                       lineageId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].Columns[sitelongitude]" />
                     <inputColumn
-                      refId="Package\Sites 1\Sites into base-no.Inputs[OLE DB Destination Input].Columns[sitestatus]"
+                      refId="Package\Sites 1\Sites into base-no.Inputs[OLE DB Destination Input].Columns[SiteStatus]"
                       cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="sitestatus"
+                      cachedLength="255"
+                      cachedName="SiteStatus"
                       externalMetadataColumnId="Package\Sites 1\Sites into base-no.Inputs[OLE DB Destination Input].ExternalColumns[SiteStatus]"
-                      lineageId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].Columns[sitestatus]" />
+                      lineageId="Package\Sites 1\Sites from Llama01.Outputs[OLE DB Source Output].Columns[SiteStatus]" />
                     <inputColumn
                       refId="Package\Sites 1\Sites into base-no.Inputs[OLE DB Destination Input].Columns[sitefixedoperatingcost]"
                       cachedDataType="numeric"
@@ -7255,7 +7254,7 @@ select distinct
 	, cast('0' as nvarchar(50)) as Cost
 
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 
 union all 
 
@@ -7265,9 +7264,22 @@ select distinct
 	, b.amortized_expansion_cost as Cost
 
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 		inner join combined_expansion_cost as b on a.future_scg_name =b.scg_name and b.temp = 'Cooler'
-		inner join national_network_capacities_clean as c on a.future_scg_name = c.SiteName and ProductName = 'Cool'		
+		inner join national_network_capacities_clean as c on a.future_scg_name = c.SiteName and ProductName = 'Cool'
+
+union all 
+
+select distinct
+	[future_scg_name]+'_C_CapEx' AS [StepCostName]
+	, isnull(c.[Throughout Capacity Based on Avg],0) + isnull([Total Cases per Module],0) as MinimumThroughput
+	, cast('99999999999' as nvarchar(50)) as Cost
+
+from 
+	v1_nominal_transpolicies_rev4_cc as a
+		inner join combined_expansion_cost as b on a.future_scg_name =b.scg_name and b.temp = 'Cooler'
+		inner join national_network_capacities_clean as c on a.future_scg_name = c.SiteName and ProductName = 'Cool'	
+		
 
 -----------------------------
 union all
@@ -7279,7 +7291,7 @@ select distinct
 	, cast('0' as nvarchar(50)) as Cost
 
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 
 union all 
 
@@ -7289,9 +7301,22 @@ select distinct
 	, b.amortized_expansion_cost as Cost
 
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 		inner join combined_expansion_cost as b on a.future_scg_name =b.scg_name and b.temp = 'dry'
 		inner join national_network_capacities_clean as c on a.future_scg_name = c.SiteName and ProductName = 'Dry'		
+
+
+union all 
+
+select distinct
+	[future_scg_name]+'_D_CapEx' AS [StepCostName]
+	, isnull(c.[Throughout Capacity Based on Avg],0) + isnull([Total Cases per Module],0) as MinimumThroughput
+	, cast('99999999999' as nvarchar(50)) as Cost
+
+from 
+	v1_nominal_transpolicies_rev4_cc as a
+		inner join combined_expansion_cost as b on a.future_scg_name =b.scg_name and b.temp = 'Dry'
+		inner join national_network_capacities_clean as c on a.future_scg_name = c.SiteName and ProductName = 'Dry'	
 
 -----------------------------
 union all
@@ -7303,7 +7328,7 @@ select distinct
 	, cast('0' as nvarchar(50)) as Cost
 
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 
 union all 
 
@@ -7313,9 +7338,22 @@ select distinct
 	, b.amortized_expansion_cost as Cost
 
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 		inner join combined_expansion_cost as b on a.future_scg_name =b.scg_name and b.temp = 'freezer'
-		inner join national_network_capacities_clean as c on a.future_scg_name = c.SiteName and ProductName = 'Frozen'		
+		inner join national_network_capacities_clean as c on a.future_scg_name = c.SiteName and ProductName = 'Frozen'
+		
+
+union all 
+
+select distinct
+	[future_scg_name]+'_F_CapEx' AS [StepCostName]
+	, isnull(c.[Throughout Capacity Based on Avg],0) + isnull([Total Cases per Module],0) as MinimumThroughput
+	, cast('99999999999' as nvarchar(50)) as Cost
+
+from 
+	v1_nominal_transpolicies_rev4_cc as a
+		inner join combined_expansion_cost as b on a.future_scg_name =b.scg_name and b.temp = 'freezer'
+		inner join national_network_capacities_clean as c on a.future_scg_name = c.SiteName and ProductName = 'Frozen'			
 
 -----------------------------</property>
                 <property
@@ -7635,7 +7673,7 @@ from
 	, cast('Quantity' as nvarchar(50)) as ThroughputBasis
 
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 
 group by 
 	future_scg_name
@@ -7650,7 +7688,7 @@ select distinct
 	, cast('Quantity' as nvarchar(50)) as ThroughputBasis
 
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 
 group by 
 	future_scg_name
@@ -7665,7 +7703,7 @@ select distinct
 	, cast('Quantity' as nvarchar(50)) as ThroughputBasis
 
 from 
-	SCD_Trans_Policies_V2 as a
+	v1_nominal_transpolicies_rev4_cc as a
 
 group by 
 	future_scg_name</property>
@@ -8052,33 +8090,9 @@ group by
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select distinct 
-	 future_scg_name as [SourceSite]
-	, dr as [DestinationSite]
-	
-	, cast('LTL' as nvarchar(50)) As [TransportationPolicy]
-	, cast('1' as nvarchar(50)) AS [PolicyParameter]
-	, cast('Continuous'  as nvarchar(50)) AS [ReviewPeriod]
-	, cast('LTL' as nvarchar(50)) AS [Mode]--Mode function
-	, cast('(ALL_Products)' as nvarchar(50)) as [ProductName]
-
-	--, cast(' ' as nvarchar(50)) as ShipmentFrequency
-	--, cast(' ' as nvarchar(50)) as TransportTime
-	--, cast(' ' as nvarchar(50)) as Distance 
-	--, cast(' ' as nvarchar(50)) as [UnloadTime]
-	--, cast(' ' as nvarchar(50)) as [MinShipmentQty]
-	
-	, round(baseline_trans_cpc,3) as [VariableTransportationCost]
-	, cast('EA' as nvarchar(50)) AS [VariableCostBasis]
-
-	, cast('Include' as nvarchar(50)) as [TransportationPolicyStatus]
-	, cast('Baseline' as nvarchar(50)) as [TransportationPolicyNotes]
-from
-	SCD_Trans_Policies_V2
-where 
-	baseline_flag = 'y' 
-
-union all 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">-------------------------
+--baseline trans policies
+-------------------------
 
 select distinct 
 	 future_scg_name as [SourceSite]
@@ -8096,15 +8110,106 @@ select distinct
 	--, cast(' ' as nvarchar(50)) as [UnloadTime]
 	--, cast(' ' as nvarchar(50)) as [MinShipmentQty]
 	
-	, round(future_trans_cpc,3) as [VariableTransportationCost]
+	, round(total_trans_cpc,3) as [VariableTransportationCost]
 	, cast('EA' as nvarchar(50)) AS [VariableCostBasis]
 
-	, cast('Exclude' as nvarchar(50)) as [TransportationPolicyStatus]
-	, cast('Future' as nvarchar(50)) as [TransportationPolicyNotes]
+	, cast('Include' as nvarchar(50)) as [TransportationPolicyStatus]
+	, cast('Baseline' as nvarchar(50)) as [TransportationPolicyNotes]
+	, cast('' as nvarchar(50)) as rank1
 from
-	SCD_Trans_Policies_V2
+	v1_nominal_transpolicies_rev4_cc
+where 
+	baseline_flag = 'Y' 
+
+union all 
+
+-------------------------
+--future trans policies
+-------------------------
+
+
+select 
+	*
+from 
+	(select distinct 
+		 future_scg_name as [SourceSite]
+		, dr as [DestinationSite]
+	
+		, cast('LTL' as nvarchar(50)) As [TransportationPolicy]
+		, cast('1' as nvarchar(50)) AS [PolicyParameter]
+		, cast('Continuous'  as nvarchar(50)) AS [ReviewPeriod]
+		, cast('LTL' as nvarchar(50)) AS [Mode]--Mode function
+		, cast('(ALL_Products)' as nvarchar(50)) as [ProductName]
+
+		--, cast(' ' as nvarchar(50)) as ShipmentFrequency
+		--, cast(' ' as nvarchar(50)) as TransportTime
+		--, cast(' ' as nvarchar(50)) as Distance 
+		--, cast(' ' as nvarchar(50)) as [UnloadTime]
+		--, cast(' ' as nvarchar(50)) as [MinShipmentQty]
+	
+		, round(total_trans_cpc,3) as [VariableTransportationCost]
+		, cast('EA' as nvarchar(50)) AS [VariableCostBasis]
+
+		, cast('Exclude' as nvarchar(50)) as [TransportationPolicyStatus]
+		, cast('Future' as nvarchar(50)) as [TransportationPolicyNotes]
+		, rank () over (partition by dr order by total_trans_cpc asc)  as rank1
+	from
+		v1_nominal_transpolicies_rev4_cc 
+	where 
+		baseline_flag = 'N' 
+	) aa
+where 
+	aa.rank1 &lt;=50 
 
 union all
+
+-------------------------------------------------------------------------
+--future trans policies for customers who do have nominal future policies 
+-------------------------------------------------------------------------
+
+select 
+	*
+from 
+	(select distinct 
+		 future_scg_name as [SourceSite]
+		, dr as [DestinationSite]
+	
+		, cast('LTL' as nvarchar(50)) As [TransportationPolicy]
+		, cast('1' as nvarchar(50)) AS [PolicyParameter]
+		, cast('Continuous'  as nvarchar(50)) AS [ReviewPeriod]
+		, cast('LTL' as nvarchar(50)) AS [Mode]--Mode function
+		, cast('(ALL_Products)' as nvarchar(50)) as [ProductName]
+
+		--, cast(' ' as nvarchar(50)) as ShipmentFrequency
+		--, cast(' ' as nvarchar(50)) as TransportTime
+		--, cast(' ' as nvarchar(50)) as Distance 
+		--, cast(' ' as nvarchar(50)) as [UnloadTime]
+		--, cast(' ' as nvarchar(50)) as [MinShipmentQty]
+	
+		, round(total_trans_cpc,3) as [VariableTransportationCost]
+		, cast('EA' as nvarchar(50)) AS [VariableCostBasis]
+
+		, cast('Exclude' as nvarchar(50)) as [TransportationPolicyStatus]
+		, cast('Future' as nvarchar(50)) as [TransportationPolicyNotes]
+		, rank () over (partition by dr order by total_trans_cpc asc)  as rank1
+	from
+		v1_nominal_transpolicies_rev4_cc 
+	where 
+		baseline_flag = 'Y' 
+	and 
+		dr in (select distinct dr
+				from v1_nominal_transpolicies_rev4_cc
+				group by dr
+				having count(distinct baseline_flag ) &lt;=1) 
+	) aa
+where 
+	aa.rank1 &lt;=50
+
+union all 
+-------------------------
+--dummy site C to OPCO 
+-------------------------
+
 
 select distinct 
 	 future_scg_name+'_C' as [SourceSite]
@@ -8127,11 +8232,16 @@ select distinct
 
 	, cast('Include' as nvarchar(50)) as [TransportationPolicyStatus]
 	, cast('xfer' as nvarchar(50)) as [TransportationPolicyNotes]
+	, cast('' as nvarchar(50)) as rank1
 from
-	SCD_Trans_Policies_V2
+	v1_nominal_transpolicies_rev4_cc
 
 
 union all
+
+-------------------------
+--dummy site D to OPCO 
+-------------------------
 
 select distinct 
 	 future_scg_name+'_D' as [SourceSite]
@@ -8154,11 +8264,16 @@ select distinct
 
 	, cast('Include' as nvarchar(50)) as [TransportationPolicyStatus]
 	, cast('xfer' as nvarchar(50)) as [TransportationPolicyNotes]
+	, cast('' as nvarchar(50)) as rank1
 from
-	SCD_Trans_Policies_V2
+	v1_nominal_transpolicies_rev4_cc
 
 
 union all
+
+-------------------------
+--dummy site F to OPCO 
+-------------------------
 
 select distinct 
 	 future_scg_name+'_F' as [SourceSite]
@@ -8181,8 +8296,9 @@ select distinct
 
 	, cast('Include' as nvarchar(50)) as [TransportationPolicyStatus]
 	, cast('xfer' as nvarchar(50)) as [TransportationPolicyNotes]
+	, cast('' as nvarchar(50)) as rank1
 from
-	SCD_Trans_Policies_V2</property>
+	v1_nominal_transpolicies_rev4_cc</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -8327,6 +8443,15 @@ from
                       lineageId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].Columns[TransportationPolicyNotes]"
                       name="TransportationPolicyNotes"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].Columns[rank1]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].ExternalColumns[rank1]"
+                      lineageId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].Columns[rank1]"
+                      name="rank1"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -8338,7 +8463,7 @@ from
                     <externalMetadataColumn
                       refId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].ExternalColumns[DestinationSite]"
                       dataType="wstr"
-                      length="271"
+                      length="255"
                       name="DestinationSite" />
                     <externalMetadataColumn
                       refId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].ExternalColumns[TransportationPolicy]"
@@ -8384,6 +8509,10 @@ from
                       dataType="wstr"
                       length="50"
                       name="TransportationPolicyNotes" />
+                    <externalMetadataColumn
+                      refId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Output].ExternalColumns[rank1]"
+                      dataType="i8"
+                      name="rank1" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -8400,7 +8529,7 @@ from
                     <outputColumn
                       refId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Error Output].Columns[DestinationSite]"
                       dataType="wstr"
-                      length="271"
+                      length="255"
                       lineageId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Error Output].Columns[DestinationSite]"
                       name="DestinationSite" />
                     <outputColumn
@@ -8456,6 +8585,11 @@ from
                       length="50"
                       lineageId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Error Output].Columns[TransportationPolicyNotes]"
                       name="TransportationPolicyNotes" />
+                    <outputColumn
+                      refId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Error Output].Columns[rank1]"
+                      dataType="i8"
+                      lineageId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Error Output].Columns[rank1]"
+                      name="rank1" />
                     <outputColumn
                       refId="Package\Trans Policy FS OPCO\from Llama01 1-17.Outputs[OLE DB Source Error Output].Columns[ErrorCode2]"
                       dataType="i4"
@@ -9217,7 +9351,7 @@ from
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Customer sourcing 1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9233,7 +9367,7 @@ from
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate customer table"
-      DTS:ThreadHint="6">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9249,7 +9383,7 @@ from
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate flow constraint"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9297,7 +9431,7 @@ from
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate groups members"
-      DTS:ThreadHint="9">
+      DTS:ThreadHint="6">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9313,7 +9447,7 @@ from
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate prod constr table"
-      DTS:ThreadHint="10">
+      DTS:ThreadHint="7">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9329,7 +9463,7 @@ from
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Production"
-      DTS:ThreadHint="12">
+      DTS:ThreadHint="11">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9345,7 +9479,7 @@ from
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Production Policies"
-      DTS:ThreadHint="11">
+      DTS:ThreadHint="10">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9361,7 +9495,7 @@ from
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate products"
-      DTS:ThreadHint="7">
+      DTS:ThreadHint="9">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9377,7 +9511,7 @@ from
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Site Sourcing Policy"
-      DTS:ThreadHint="15">
+      DTS:ThreadHint="12">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9409,7 +9543,7 @@ from
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Step Cost"
-      DTS:ThreadHint="14">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9425,7 +9559,7 @@ from
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Step Cost Def"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="14">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9441,7 +9575,7 @@ from
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate transpolicy table"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="15">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9593,131 +9727,131 @@ from
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="124,42"
+          Size="123.2,41.6"
           Id="Package\Customer"
           TopLeft="64.75,137.5" />
         <NodeLayout
-          Size="165,42"
+          Size="164.8,41.6"
           Id="Package\Customer demand"
           TopLeft="651,407.5" />
         <NodeLayout
-          Size="167,42"
+          Size="167.2,41.6"
           Id="Package\Customer sourcing"
           TopLeft="794,644.25" />
         <NodeLayout
-          Size="150,42"
+          Size="150.4,41.6"
           Id="Package\Flow constraint"
           TopLeft="1004.5,150.5" />
         <NodeLayout
-          Size="180,42"
+          Size="180,41.6"
           Id="Package\Flow count constraint"
           TopLeft="768.25,133" />
         <NodeLayout
-          Size="106,42"
+          Size="105.6,41.6"
           Id="Package\group"
           TopLeft="110.25,370.75" />
         <NodeLayout
-          Size="153,42"
+          Size="152.8,41.6"
           Id="Package\group members"
           TopLeft="279.25,369.25" />
         <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\Prod constraints"
           TopLeft="563.53572500239,141.705875574923" />
         <NodeLayout
-          Size="138,42"
+          Size="137.6,41.6"
           Id="Package\Prod policies"
           TopLeft="287.5,647.25" />
         <NodeLayout
-          Size="129,42"
+          Size="128.8,41.6"
           Id="Package\Production"
           TopLeft="1168.25,843.25" />
         <NodeLayout
-          Size="120,42"
+          Size="120,41.6"
           Id="Package\Products"
           TopLeft="951.5,372.229417000509" />
         <NodeLayout
-          Size="177,42"
+          Size="176.8,41.6"
           Id="Package\Site sourcing policies"
           TopLeft="525.5,645.25" />
         <NodeLayout
-          Size="101,42"
+          Size="100.8,41.6"
           Id="Package\Sites 1"
           TopLeft="309.25,131" />
         <NodeLayout
-          Size="122,42"
+          Size="121.6,41.6"
           Id="Package\Step cost"
           TopLeft="1385.25,646.25" />
         <NodeLayout
-          Size="141,42"
+          Size="140.8,41.6"
           Id="Package\Step cost def"
           TopLeft="1167.25,649.25" />
         <NodeLayout
-          Size="181,42"
+          Size="180.8,41.6"
           Id="Package\Trans Policy FS OPCO"
           TopLeft="58.5,617.25" />
         <NodeLayout
-          Size="210,42"
+          Size="209.6,41.6"
           Id="Package\Truncate Customer demand"
           TopLeft="647.5,282" />
         <NodeLayout
-          Size="221,42"
+          Size="220.8,41.6"
           Id="Package\Truncate Customer sourcing 1"
           TopLeft="762,557.5" />
         <NodeLayout
-          Size="194,42"
+          Size="193.6,41.6"
           Id="Package\Truncate customer table"
           TopLeft="35.25,47" />
         <NodeLayout
-          Size="193,42"
+          Size="192.8,41.6"
           Id="Package\Truncate flow constraint"
           TopLeft="984.75,54" />
         <NodeLayout
-          Size="207,42"
+          Size="207.2,41.6"
           Id="Package\Truncate Flow count constr"
           TopLeft="760.75,53.5" />
         <NodeLayout
-          Size="156,42"
+          Size="156,41.6"
           Id="Package\Truncate groups"
           TopLeft="81.75,277.25" />
         <NodeLayout
-          Size="203,42"
+          Size="203.2,41.6"
           Id="Package\Truncate groups members"
           TopLeft="250.75,275.75" />
         <NodeLayout
-          Size="204,42"
+          Size="204,41.6"
           Id="Package\Truncate prod constr table"
           TopLeft="534.03572500239,51.2058755749236" />
         <NodeLayout
-          Size="174,42"
+          Size="174.4,41.6"
           Id="Package\Truncate Production"
           TopLeft="1153.25,746.25" />
         <NodeLayout
-          Size="221,42"
+          Size="220.8,41.6"
           Id="Package\Truncate Production Policies"
           TopLeft="272.5,550.25" />
         <NodeLayout
-          Size="201,42"
+          Size="200.8,41.6"
           Id="Package\Truncate products"
           TopLeft="916.5,291" />
         <NodeLayout
-          Size="221,42"
+          Size="220.8,41.6"
           Id="Package\Truncate Site Sourcing Policy"
           TopLeft="510.5,547" />
         <NodeLayout
-          Size="194,42"
+          Size="193.6,41.6"
           Id="Package\Truncate Sites"
           TopLeft="263.25,48.5" />
         <NodeLayout
-          Size="169,42"
+          Size="168.8,41.6"
           Id="Package\Truncate Step Cost"
           TopLeft="1370.25,549.25" />
         <NodeLayout
-          Size="188,42"
+          Size="188,41.6"
           Id="Package\Truncate Step Cost Def"
           TopLeft="1152.25,552.25" />
         <NodeLayout
-          Size="201,42"
+          Size="200.8,41.6"
           Id="Package\Truncate transpolicy table"
           TopLeft="42.5,546.25" />
         <EdgeLayout
@@ -9744,18 +9878,18 @@ from
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint1]"
-          TopLeft="129.5,89">
+          TopLeft="129.2,88.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,48.5"
+              EndConnector="0,48.9"
               Start="0,0"
-              End="0,41">
+              End="0,41.4">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41" />
+                    End="0,41.4" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10127,13 +10261,13 @@ from
     design-time-name="Package\Customer">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="192,42"
+          Size="192,41.6"
           Id="Package\Customer\Customer from Llama01"
           TopLeft="237,91" />
         <NodeLayout
-          Size="186,42"
+          Size="185.6,41.6"
           Id="Package\Customer\Customer into base-no"
           TopLeft="253,210" />
         <EdgeLayout
@@ -10167,7 +10301,9 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10198,13 +10334,13 @@ from
     design-time-name="Package\Customer demand">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="144,42"
+          Size="144,41.6"
           Id="Package\Customer demand\from Llama01"
           TopLeft="237,91" />
         <NodeLayout
-          Size="138,42"
+          Size="137.6,41.6"
           Id="Package\Customer demand\into base-no"
           TopLeft="253,210" />
         <EdgeLayout
@@ -10238,7 +10374,9 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10269,13 +10407,13 @@ from
     design-time-name="Package\Customer sourcing">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="138,42"
+          Size="137.6,41.6"
           Id="Package\Customer sourcing\into base-no"
           TopLeft="235,202" />
         <NodeLayout
-          Size="144,42"
+          Size="144,41.6"
           Id="Package\Customer sourcing\from Llama01"
           TopLeft="237,91" />
         <EdgeLayout
@@ -10297,7 +10435,9 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10328,13 +10468,13 @@ from
     design-time-name="Package\Flow constraint">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="138,42"
+          Size="137.6,41.6"
           Id="Package\Flow constraint\into base-no"
           TopLeft="254,211" />
         <NodeLayout
-          Size="144,42"
+          Size="144,41.6"
           Id="Package\Flow constraint\from Llama01"
           TopLeft="237,92" />
         <EdgeLayout
@@ -10368,7 +10508,9 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10399,7 +10541,7 @@ from
     design-time-name="Package\Flow count constraint">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="138,42"
           Id="Package\Flow count constraint\into base-no"
@@ -10439,7 +10581,9 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10470,7 +10614,7 @@ from
     design-time-name="Package\group">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="144,42"
           Id="Package\group\from Llama01"
@@ -10510,7 +10654,9 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10541,7 +10687,7 @@ from
     design-time-name="Package\group members">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="138,42"
           Id="Package\group members\into base-no"
@@ -10581,7 +10727,9 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10612,13 +10760,13 @@ from
     design-time-name="Package\Prod constraints">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="138,42"
+          Size="137.6,41.6"
           Id="Package\Prod constraints\into base-no"
           TopLeft="253,210" />
         <NodeLayout
-          Size="144,42"
+          Size="144,41.6"
           Id="Package\Prod constraints\from Llama01"
           TopLeft="237,91" />
         <EdgeLayout
@@ -10652,7 +10800,9 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10683,7 +10833,7 @@ from
     design-time-name="Package\Prod policies">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="138,42"
           Id="Package\Prod policies\into base-no"
@@ -10723,7 +10873,9 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10741,7 +10893,7 @@ from
     design-time-name="Package\Production">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="138,42"
           Id="Package\Production\into base-no"
@@ -10781,7 +10933,9 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10812,7 +10966,7 @@ from
     design-time-name="Package\Products">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="146,42"
           Id="Package\Products\into base-no 4"
@@ -10852,7 +11006,9 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10883,13 +11039,13 @@ from
     design-time-name="Package\Site sourcing policies">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="144,42"
+          Size="144,41.6"
           Id="Package\Site sourcing policies\from Llama01"
           TopLeft="237,91" />
         <NodeLayout
-          Size="138,42"
+          Size="137.6,41.6"
           Id="Package\Site sourcing policies\into base-no"
           TopLeft="253,210" />
         <EdgeLayout
@@ -10923,7 +11079,9 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10956,11 +11114,11 @@ from
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163,42"
+          Size="163.2,41.6"
           Id="Package\Sites 1\Sites into base-no"
           TopLeft="253,210" />
         <NodeLayout
-          Size="170,42"
+          Size="169.6,41.6"
           Id="Package\Sites 1\Sites from Llama01"
           TopLeft="237,91" />
         <EdgeLayout
@@ -11025,7 +11183,7 @@ from
     design-time-name="Package\Step cost">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="138,42"
           Id="Package\Step cost\into base-no"
@@ -11065,7 +11223,9 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11096,7 +11256,7 @@ from
     design-time-name="Package\Step cost def">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="138,42"
           Id="Package\Step cost def\into base-no"
@@ -11136,7 +11296,9 @@ from
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11169,13 +11331,13 @@ from
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="168,42"
-          Id="Package\Trans Policy FS OPCO\from Llama01 1-17"
-          TopLeft="533,85" />
-        <NodeLayout
-          Size="146,42"
+          Size="145.6,41.6"
           Id="Package\Trans Policy FS OPCO\into base-no 1"
           TopLeft="549,203" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\Trans Policy FS OPCO\from Llama01 1-17"
+          TopLeft="533,85" />
         <EdgeLayout
           Id="Package\Trans Policy FS OPCO.Paths[OLE DB Source Output]"
           TopLeft="619.6,126.6">
